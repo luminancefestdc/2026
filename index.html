@@ -3,28 +3,435 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luminous Fest — DCSMAT</title>
-<meta name="description" content="Luminous Fest — Kerala's grandest college feast, hosted at DCSMAT. Register now.">
+<title>Luminance Fest — DCSMAT</title>
+<meta name="description" content="Luminance Fest — South India's biggest e-sports and youth fest, organized by UG students at DCSMAT Vagamon.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Jost:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800;900&family=Jost:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   LUMINANCE FEST — E-SPORTS / YOUTH EDITION
+   Palette: cyber black, neon purple, electric cyan, hot pink
+   Type: Unbounded (display) / Jost (body) / DM Mono (labels)
+========================================================= */
+:root{
+  --bg: #06060A;
+  --bg-deep: #030305;
+  --card: #0D0D14;
+  --card-line: rgba(255, 255, 255, 0.08);
+
+  --neon-purple: #9D4EDD;
+  --neon-cyan: #00F0FF;
+  --neon-pink: #FF0055;
+  --neon-green: #39FF14;
+
+  --ivory: #F4F4F8;
+  --muted: #8A8A9D;
+  --muted-dim: #5C5C70;
+
+  --display: "Unbounded", sans-serif;
+  --body: "Jost", sans-serif;
+  --mono: "DM Mono", monospace;
+
+  --container: 1120px;
+}
+
+*{ box-sizing: border-box; margin:0; padding:0; }
+html{ scroll-behavior: smooth; }
+body{
+  background: var(--bg);
+  color: var(--ivory);
+  font-family: var(--body);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a{ color: inherit; text-decoration: none; }
+ul{ list-style: none; }
+img{ max-width: 100%; display:block; }
+
+::selection{ background: var(--neon-cyan); color: var(--bg-deep); }
+
+/* Faint digital grid overlay */
+.grid-overlay{
+  position: fixed; inset:0; pointer-events:none; z-index: 500;
+  opacity: 0.03; mix-blend-mode: screen;
+  background-size: 30px 30px;
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px);
+}
+
+/* ============ NAV ============ */
+.nav{
+  position: fixed; top:0; left:0; right:0; z-index: 100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 20px 5vw;
+  background: rgba(6, 6, 10, 0.7);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--card-line);
+}
+.nav__mark{
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--ivory);
+  display:flex; align-items:center; gap:8px;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+.nav__mark span.accent{ color: var(--neon-cyan); }
+.nav__links{ display:flex; align-items:center; gap: 30px; }
+.nav__links a{
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  transition: color 0.25s ease;
+}
+.nav__links a:not(.nav__cta):hover{ color: var(--neon-cyan); }
+.nav__cta{
+  background: transparent;
+  border: 1px solid var(--neon-cyan);
+  padding: 10px 22px;
+  border-radius: 4px;
+  color: var(--neon-cyan) !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.nav__cta:hover{ 
+  background: var(--neon-cyan); 
+  color: var(--bg-deep) !important;
+  box-shadow: 0 0 15px rgba(0,240,255,0.4); 
+}
+.nav__burger{ display:none; background:none; border:none; cursor:pointer; flex-direction:column; gap:5px; }
+.nav__burger span{ width:22px; height:2px; background: var(--ivory); display:block; transition: 0.3s; }
+
+/* ============ HERO ============ */
+.hero{
+  position: relative;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 30%, rgba(157, 78, 221, 0.15), transparent 40%),
+    radial-gradient(circle at 85% 70%, rgba(0, 240, 255, 0.12), transparent 45%),
+    var(--bg-deep);
+  display:flex; flex-direction: column; align-items:center; justify-content: center;
+  padding: 120px 5vw 80px;
+  text-align:center;
+  overflow:hidden;
+}
+
+/* Digital floating particles */
+.particles{ position:absolute; inset:0; z-index:1; pointer-events:none; }
+.particles span{
+  position:absolute; width:2px; height:8px;
+  background: var(--neon-cyan);
+  opacity: 0;
+  animation: data-fall 4s linear infinite;
+}
+.particles span:nth-child(odd){ background: var(--neon-purple); height: 12px; }
+.particles span:nth-child(3n){ background: var(--neon-pink); height: 4px; }
+@keyframes data-fall{ 
+  0% { transform: translateY(-100px); opacity: 0; } 
+  20% { opacity: 0.8; }
+  80% { opacity: 0.8; }
+  100% { transform: translateY(100vh); opacity: 0; } 
+}
+
+.hero__eyebrow{
+  color: var(--neon-cyan);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  z-index: 2;
+  background: rgba(0,240,255,0.1);
+  padding: 6px 16px;
+  border-radius: 4px;
+  border: 1px solid rgba(0,240,255,0.2);
+}
+
+/* Modern Geometric/Tech SVG */
+.hero__graphic{ position: relative; width: 140px; margin-bottom: 20px; z-index: 2; }
+.hero__graphic svg{ 
+  width: 100%; height: auto; 
+  filter: drop-shadow(0 0 20px rgba(157,78,221,0.5));
+  animation: float 4s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.hero__title{
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(3rem, 10vw, 7.5rem);
+  color: var(--ivory);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  z-index: 2;
+  text-shadow: 4px 4px 0px rgba(0,0,0,0.5);
+}
+.hero__title span{
+  display:block;
+  background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan), var(--neon-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 0.85em;
+  margin-top: 5px;
+}
+.hero__tagline{
+  color: var(--muted);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-weight: 400;
+  margin-top: 30px;
+  max-width: 600px;
+  z-index:2;
+}
+
+.hero__meta{
+  display:flex; align-items:center; gap: 30px;
+  margin-top: 50px; z-index:2;
+  flex-wrap: wrap; justify-content:center;
+  background: var(--card);
+  padding: 20px 40px;
+  border-radius: 8px;
+  border: 1px solid var(--card-line);
+}
+.hero__meta-item{
+  font-family: var(--body); color: var(--ivory);
+  font-size: 1rem; text-align:center;
+}
+.hero__meta-item span{
+  display:block; font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--neon-cyan);
+  margin-bottom: 6px;
+}
+.hero__meta-divider{ width:1px; height: 35px; background: var(--card-line); }
+
+.btn{
+  display:inline-flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-weight: 600; font-size: 0.9rem;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 16px 40px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.btn--neon{
+  background: var(--neon-purple);
+  color: var(--ivory);
+  margin-top: 40px; z-index: 2;
+  box-shadow: 0 0 20px rgba(157,78,221,0.4);
+}
+.btn--neon:hover{ 
+  transform: translateY(-2px); 
+  background: var(--neon-cyan);
+  color: var(--bg-deep);
+  box-shadow: 0 0 30px rgba(0,240,255,0.6); 
+}
+.btn--block{ width:100%; text-align:center; margin-top: 10px; }
+
+/* ============ SECTION SHARED ============ */
+section{ padding: 120px 5vw; max-width: var(--container); margin: 0 auto; position: relative; }
+.about, .schedule, .gallery{ text-align:center; }
+[class$="__label"]{
+  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--neon-pink);
+  margin-bottom: 20px; display: inline-block;
+}
+
+/* ============ ABOUT ============ */
+.about__title{
+  font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1; max-width: 800px; margin: 0 auto 35px;
+  text-transform: uppercase;
+}
+.about__body{
+  max-width: 680px; margin: 0 auto; font-weight: 400; font-size: 1.15rem;
+  color: var(--muted); line-height: 1.7;
+}
+.about__body strong{ color: var(--ivory); font-weight: 600; }
+.about__body em{ font-style: normal; color: var(--neon-cyan); font-weight: 500; }
+
+.about__stats{
+  display:flex; justify-content:center; gap: 70px;
+  margin-top: 80px; flex-wrap: wrap;
+}
+.stat{ display:flex; flex-direction:column; gap: 10px; }
+.stat strong{
+  font-family: var(--display); font-size: 2.8rem; font-weight: 800;
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  line-height: 1;
+}
+.stat span{ font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.1em; color: var(--muted-dim); text-transform: uppercase; }
+
+/* ============ SCHEDULE (E-Sports Tournament) ============ */
+.schedule{ background: var(--card); max-width: none; padding-left: 5vw; padding-right: 5vw; border-top: 1px solid var(--card-line); border-bottom: 1px solid var(--card-line); }
+.schedule__title{
+  font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0 auto 15px; text-transform: uppercase;
+}
+.schedule__sub{ color: var(--muted); font-size: 1.1rem; margin-bottom: 70px; }
+.bracket{
+  max-width: 850px; margin: 0 auto;
+  border: 1px solid var(--card-line);
+  border-radius: 8px;
+  background: var(--bg-deep);
+  overflow: hidden;
+}
+.match{
+  display:grid; grid-template-columns: 80px 1fr auto;
+  align-items:center; gap: 20px;
+  padding: 30px 25px;
+  border-bottom: 1px solid var(--card-line);
+  text-align:left;
+  transition: background 0.3s ease;
+}
+.match:last-child{ border-bottom: none; }
+.match:hover{ background: rgba(0, 240, 255, 0.03); }
+.match__num{
+  font-family: var(--display); color: var(--neon-purple); font-size: 1.5rem; font-weight: 800; opacity: 0.5;
+}
+.match__info h3{
+  font-family: var(--display); font-weight: 600; font-size: 1.2rem; color: var(--ivory); margin-bottom: 8px;
+  text-transform: uppercase; letter-spacing: 0.02em;
+}
+.match__info p{ color: var(--muted); font-size: 0.95rem; font-weight: 400; }
+.match__day{
+  font-family: var(--mono); font-size: 0.8rem; color: var(--neon-cyan); white-space: nowrap;
+  text-align: right; background: rgba(0,240,255,0.1); padding: 8px 12px; border-radius: 4px;
+}
+
+/* ============ GALLERY ============ */
+.gallery__title{
+  font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 70px; text-transform: uppercase;
+}
+.gallery__grid{
+  display:grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+}
+.gallery__tile{
+  aspect-ratio: 4/5; border-radius: 6px; position:relative; overflow:hidden;
+  display:flex; align-items:flex-end; padding: 20px;
+  border: 1px solid var(--card-line);
+  transition: transform 0.3s ease;
+}
+.gallery__tile:hover { transform: translateY(-5px); border-color: var(--neon-purple); }
+/* Gradients mimicking neon lighting in dark rooms */
+.gallery__tile--a{ background: linear-gradient(180deg, rgba(0,0,0,0) 0%, #15092A 100%); }
+.gallery__tile--b{ background: linear-gradient(180deg, rgba(0,0,0,0) 0%, #062325 100%); }
+.gallery__tile--c{ background: linear-gradient(180deg, rgba(0,0,0,0) 0%, #2A0914 100%); }
+.gallery__tile--d{ background: linear-gradient(180deg, rgba(0,0,0,0) 0%, #0A1B0C 100%); }
+.gallery__tile span{
+  color: var(--ivory); font-family: var(--display); font-size: 0.9rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.05em; text-align:left; z-index: 2;
+}
+
+/* ============ REGISTER ============ */
+.register{ background: var(--bg-deep); max-width: none; padding-left: 5vw; padding-right: 5vw; color: var(--ivory); }
+.register__inner{
+  max-width: var(--container); margin: 0 auto;
+  display:grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start;
+  text-align:left;
+}
+.register__title{ font-family: var(--display); font-weight: 800; font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 25px; text-transform: uppercase; line-height: 1.1; }
+.register__body{ color: var(--muted); font-size: 1.1rem; line-height: 1.6; margin-bottom: 35px; }
+.register__list{ display:flex; flex-direction:column; gap: 18px; }
+.register__list li{
+  padding-left: 30px; position:relative; color: var(--ivory); font-size: 1rem; font-weight: 400;
+}
+.register__list li::before{
+  content: "■"; position:absolute; left:0; top:2px; color: var(--neon-cyan); font-size: 0.8rem;
+}
+
+.register__form{
+  background: var(--card); border: 1px solid var(--card-line); border-radius: 8px; padding: 45px;
+  display:grid; grid-template-columns: 1fr 1fr; gap: 24px;
+}
+.field{ display:flex; flex-direction:column; gap: 10px; grid-column: span 2; }
+.field--half{ grid-column: span 1; }
+.field label{
+  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+}
+.field input, .field select{
+  font-family: var(--body); font-size: 1rem; color: var(--ivory);
+  padding: 15px 18px; border: 1px solid var(--card-line); border-radius: 4px;
+  background: rgba(255,255,255,0.02); outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.field input::placeholder{ color: var(--muted-dim); }
+.field input:focus, .field select:focus{ border-color: var(--neon-cyan); box-shadow: 0 0 0 3px rgba(0,240,255,0.15); }
+.field select{ color-scheme: dark; }
+.field__note{ grid-column: span 2; text-align:center; font-family: var(--mono); font-size: 0.75rem; color: var(--muted-dim); margin-top: 10px; }
+
+/* ============ FOOTER ============ */
+.footer{
+  background: var(--bg); color: var(--muted);
+  text-align:center; padding: 70px 5vw 40px; max-width:none;
+  border-top: 1px solid var(--card-line);
+}
+.footer__mark{ font-family: var(--display); font-weight:800; font-size: 1.2rem; color: var(--ivory); margin-bottom: 15px; text-transform: uppercase; }
+.footer p{ font-size: 0.95rem; margin-bottom: 10px; }
+.footer__links{ display:flex; justify-content:center; gap: 30px; margin: 25px 0; font-family: var(--mono); font-size: 0.85rem; text-transform: uppercase;}
+.footer__links a:hover{ color: var(--neon-cyan); }
+.footer__fine{ opacity: 0.5; font-size: 0.8rem !important; margin-top: 30px; }
+
+/* ============ FOCUS VISIBLE ============ */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible{
+  outline: 2px solid var(--neon-pink); outline-offset: 2px;
+}
+
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px){
+  .nav__links{ display:none; }
+  .nav__burger{ display:flex; }
+  .hero__meta{ flex-direction: column; gap: 20px; padding: 25px; width: 100%; }
+  .hero__meta-divider{ display:none; }
+  .about__stats{ gap: 40px; }
+  .gallery__grid{ grid-template-columns: repeat(2, 1fr); }
+  .register__inner{ grid-template-columns: 1fr; gap: 60px; }
+  .register__form{ grid-template-columns: 1fr; padding: 30px; }
+  .field, .field--half{ grid-column: span 1; }
+  .field__note{ grid-column: span 1; }
+  .match{ grid-template-columns: 1fr; gap: 15px; padding: 25px; }
+  .match__num{ display: none; }
+  .match__day{ display: inline-block; width: max-content; text-align:left; margin-top: 5px; }
+}
+@media (max-width: 500px){
+  .gallery__grid{ grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
 
-<div class="grain"></div>
+<div class="grid-overlay"></div>
 
 <!-- ============ NAV ============ -->
 <header class="nav">
   <div class="nav__mark">
-    <span class="nav__flame">◆</span>
-    <span>Luminous&nbsp;Fest</span>
+    Luminance<span class="accent">Fest</span>
   </div>
   <nav class="nav__links">
     <a href="#about">About</a>
-    <a href="#courses">Schedule</a>
-    <a href="#gallery">Glimpses</a>
-    <a href="#register" class="nav__cta">Register</a>
+    <a href="#lineup">Lineup</a>
+    <a href="#gallery">Arenas</a>
+    <a href="#register" class="nav__cta">Register Now</a>
   </nav>
   <button class="nav__burger" id="burger" aria-label="Open menu">
     <span></span><span></span><span></span>
@@ -33,143 +440,120 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="particles" id="particles" aria-hidden="true"></div>
 
-  <div class="hero__eyebrow">DC School of Management &amp; Technology · Vagamon, Kerala</div>
+  <div class="hero__eyebrow">DCSMAT Vagamon · South India's Biggest Youth Fest</div>
 
-  <div class="lamp" aria-hidden="true">
-    <svg viewBox="0 0 200 260" class="lamp__svg">
-      <ellipse cx="100" cy="248" rx="70" ry="9" fill="var(--ink)" opacity="0.18"/>
-      <path d="M60 244 Q100 258 140 244 L150 226 Q100 240 50 226 Z" fill="url(#brass2)"/>
-      <path d="M50 226 Q100 240 150 226 L142 206 Q100 220 58 206 Z" fill="url(#brass1)"/>
-      <rect x="96" y="150" width="8" height="60" fill="url(#brass1)"/>
-      <path d="M70 156 Q100 170 130 156 L124 140 Q100 150 76 140 Z" fill="url(#brass1)"/>
-      <path d="M78 140 Q100 150 122 140 Q122 120 100 112 Q78 120 78 140 Z" fill="url(#brass2)"/>
-      <ellipse cx="100" cy="112" rx="22" ry="7" fill="url(#brass1)"/>
-      <path id="flame" d="M100 60 C90 78 84 92 100 108 C116 92 110 78 100 60 Z" fill="url(#flameGrad)"/>
-      <path d="M100 76 C96 86 94 94 100 102 C106 94 104 86 100 76 Z" fill="#FFF4D6" opacity="0.9"/>
-      <defs>
-        <linearGradient id="brass1" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#E9C173"/>
-          <stop offset="55%" stop-color="#C79A3F"/>
-          <stop offset="100%" stop-color="#8C6A26"/>
-        </linearGradient>
-        <linearGradient id="brass2" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#8C6A26"/>
-          <stop offset="50%" stop-color="#E9C173"/>
-          <stop offset="100%" stop-color="#8C6A26"/>
-        </linearGradient>
-        <radialGradient id="flameGrad" cx="50%" cy="70%" r="70%">
-          <stop offset="0%" stop-color="#FFF6DE"/>
-          <stop offset="35%" stop-color="#FDCB5D"/>
-          <stop offset="75%" stop-color="#F2A23C"/>
-          <stop offset="100%" stop-color="#D9722B"/>
-        </radialGradient>
-      </defs>
+  <!-- Abstract Tech / Controller Graphic -->
+  <div class="hero__graphic" aria-hidden="true">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50 10L90 30V70L50 90L10 70V30L50 10Z" stroke="#9D4EDD" stroke-width="3"/>
+      <circle cx="50" cy="50" r="15" stroke="#00F0FF" stroke-width="3"/>
+      <path d="M50 25V35" stroke="#FF0055" stroke-width="3" stroke-linecap="round"/>
+      <path d="M50 65V75" stroke="#FF0055" stroke-width="3" stroke-linecap="round"/>
+      <path d="M25 50H35" stroke="#FF0055" stroke-width="3" stroke-linecap="round"/>
+      <path d="M65 50H75" stroke="#FF0055" stroke-width="3" stroke-linecap="round"/>
     </svg>
   </div>
 
-  <h1 class="hero__title">Luminous<span>Fest</span></h1>
-  <p class="hero__tagline">Kerala's grandest college feast — a night of light, sadya &amp; song</p>
+  <h1 class="hero__title">Luminance<span>Fest</span></h1>
+  <p class="hero__tagline">Organized by UG students. Pure adrenaline, raw talent, zero lag. Step into the arena.</p>
 
   <div class="hero__meta">
-    <div class="hero__meta-item"><span>Date</span>September 4–6, 2026</div>
+    <div class="hero__meta-item"><span>Dates</span>September 4–6, 2026</div>
     <div class="hero__meta-divider"></div>
-    <div class="hero__meta-item"><span>Venue</span>DCSMAT Campus, Vagamon</div>
+    <div class="hero__meta-item"><span>Location</span>DCSMAT, Vagamon Campus</div>
     <div class="hero__meta-divider"></div>
-    <div class="hero__meta-item"><span>Entry</span>Open to all colleges</div>
+    <div class="hero__meta-item"><span>Prize Pool</span>₹5,00,000+</div>
   </div>
 
-  <a href="#register" class="btn btn--gold">Reserve Your Seat</a>
-  <div class="hero__scroll" aria-hidden="true">Scroll<span></span></div>
+  <a href="#register" class="btn btn--neon">Claim Your Spot</a>
 </section>
 
 <!-- ============ ABOUT ============ -->
 <section class="about" id="about">
-  <div class="about__label">The Feast</div>
-  <h2 class="about__title">Where a hundred brass lamps<br>are lit as one</h2>
+  <div class="about__label">Level Up Your Experience</div>
+  <h2 class="about__title">The Ultimate<br>Digital Battleground</h2>
   <p class="about__body">
-    Every monsoon's end, DCSMAT turns its courtyard into the state's largest student gathering —
-    equal parts <em>sadya</em>, stage and spectacle. Luminous Fest brings together performers,
-    chefs, makers and dreamers from across Kerala's colleges for three days of competitions,
-    cultural nights and a feast served the traditional way: on banana leaf, under a thousand
-    flickering flames.
+    Organized exclusively by the <strong>UG students of DCSMAT Vagamon</strong>, Luminance Fest has evolved. 
+    We've traded the traditional for the digital, creating an electrifying ecosystem for gamers, tech enthusiasts, and creators across South India. 
+    Expect <em>three days of relentless competition</em>, high-octane music, and next-gen culture.
   </p>
   <div class="about__stats">
-    <div class="stat"><strong>42</strong><span>Colleges expected</span></div>
-    <div class="stat"><strong>18</strong><span>Events &amp; competitions</span></div>
-    <div class="stat"><strong>3</strong><span>Days of festivity</span></div>
-    <div class="stat"><strong>5000+</strong><span>Attendees last year</span></div>
+    <div class="stat"><strong>50+</strong><span>Colleges Expected</span></div>
+    <div class="stat"><strong>12</strong><span>E-Sports Titles</span></div>
+    <div class="stat"><strong>3</strong><span>Nights of Mayhem</span></div>
+    <div class="stat"><strong>5K+</strong><span>Gamers & Fans</span></div>
   </div>
 </section>
 
-<!-- ============ SCHEDULE — served as a sadya ============ -->
-<section class="courses" id="courses">
-  <div class="courses__label">The Spread</div>
-  <h2 class="courses__title">Served in order, as a sadya should be</h2>
-  <p class="courses__sub">Three days, plated course by course.</p>
+<!-- ============ SCHEDULE (LINEUP) ============ -->
+<section class="schedule" id="lineup">
+  <div class="schedule__label">Tournament Bracket</div>
+  <h2 class="schedule__title">Three Days of Action</h2>
+  <p class="schedule__sub">Mainstage events and major brackets. Don't miss a beat.</p>
 
-  <div class="leaf">
-    <div class="course">
-      <div class="course__num">01</div>
-      <div class="course__info">
-        <h3>Inauguration &amp; Lamp Lighting</h3>
-        <p>The traditional nilavilakku is lit to open the fest — Day 1, morning.</p>
+  <div class="bracket">
+    <div class="match">
+      <div class="match__num">01</div>
+      <div class="match__info">
+        <h3>Opening Ceremony & Cosplay Walk</h3>
+        <p>Kickoff event featuring top cosplayers and special guest streamers.</p>
       </div>
-      <div class="course__day">Sep 4 · 9:00 AM</div>
+      <div class="match__day">Sep 4 · 4:00 PM</div>
     </div>
-    <div class="course">
-      <div class="course__num">02</div>
-      <div class="course__info">
-        <h3>Ottamthullal &amp; Folk Arts Competition</h3>
-        <p>Classical and folk performance rounds across the main stage.</p>
+    <div class="match">
+      <div class="match__num">02</div>
+      <div class="match__info">
+        <h3>BGMI & Free Fire Mobile Arenas</h3>
+        <p>Squad qualifiers and semi-finals on the main stage screens.</p>
       </div>
-      <div class="course__day">Sep 4 · 11:00 AM</div>
+      <div class="match__day">Sep 4 · 6:30 PM</div>
     </div>
-    <div class="course">
-      <div class="course__num">03</div>
-      <div class="course__info">
-        <h3>Sadya — The Grand Feast</h3>
-        <p>A 26-dish traditional banana-leaf feast for every registered guest.</p>
+    <div class="match">
+      <div class="match__num">03</div>
+      <div class="match__info">
+        <h3>Valorant & CS2 PC Tournaments</h3>
+        <p>High-stakes tactical shooter brackets in the dedicated LAN center.</p>
       </div>
-      <div class="course__day">Sep 4 · 1:00 PM</div>
+      <div class="match__day">Sep 5 · 10:00 AM</div>
     </div>
-    <div class="course">
-      <div class="course__num">04</div>
-      <div class="course__info">
-        <h3>Battle of Bands &amp; Street Play</h3>
-        <p>Inter-college music and theatre finals under the open sky.</p>
+    <div class="match">
+      <div class="match__num">04</div>
+      <div class="match__info">
+        <h3>FIFA 26 & Mortal Kombat Consoles</h3>
+        <p>1v1 console battles. Single elimination, absolute carnage.</p>
       </div>
-      <div class="course__day">Sep 5 · 4:00 PM</div>
+      <div class="match__day">Sep 5 · 3:00 PM</div>
     </div>
-    <div class="course">
-      <div class="course__num">05</div>
-      <div class="course__info">
-        <h3>Chox Pox — Culinary Challenge</h3>
-        <p>Live cook-off judged by campus chefs and alumni restaurateurs.</p>
+    <div class="match">
+      <div class="match__num">05</div>
+      <div class="match__info">
+        <h3>E-Sports Grand Finals</h3>
+        <p>The ultimate showdown across all major titles. Cash prizes awarded live.</p>
       </div>
-      <div class="course__day">Sep 5 · 6:00 PM</div>
+      <div class="match__day">Sep 6 · 2:00 PM</div>
     </div>
-    <div class="course">
-      <div class="course__num">06</div>
-      <div class="course__info">
-        <h3>Luminous Night — Closing Gala</h3>
-        <p>Fireworks, headline performances and the closing lamp ceremony.</p>
+    <div class="match">
+      <div class="match__num">06</div>
+      <div class="match__info">
+        <h3>Luminance DJ Night & Victory Party</h3>
+        <p>Headline EDM sets, neon lights, and the official afterparty.</p>
       </div>
-      <div class="course__day">Sep 6 · 7:00 PM</div>
+      <div class="match__day">Sep 6 · 8:00 PM</div>
     </div>
   </div>
 </section>
 
 <!-- ============ GALLERY ============ -->
 <section class="gallery" id="gallery">
-  <div class="gallery__label">Glimpses</div>
-  <h2 class="gallery__title">Last year, in brief</h2>
+  <div class="gallery__label">The Arenas</div>
+  <h2 class="gallery__title">Where Legends Are Made</h2>
   <div class="gallery__grid">
-    <div class="gallery__tile gallery__tile--a"><span>Lamp Lighting Ceremony</span></div>
-    <div class="gallery__tile gallery__tile--b"><span>The Grand Sadya</span></div>
-    <div class="gallery__tile gallery__tile--c"><span>Battle of Bands Finals</span></div>
-    <div class="gallery__tile gallery__tile--d"><span>Closing Fireworks</span></div>
+    <div class="gallery__tile gallery__tile--a"><span>Main Stage Setup</span></div>
+    <div class="gallery__tile gallery__tile--b"><span>The LAN Center</span></div>
+    <div class="gallery__tile gallery__tile--c"><span>Console Lounge</span></div>
+    <div class="gallery__tile gallery__tile--d"><span>Neon DJ Night</span></div>
   </div>
 </section>
 
@@ -177,30 +561,30 @@
 <section class="register" id="register">
   <div class="register__inner">
     <div class="register__side">
-      <div class="register__label">Reserve Your Seat</div>
-      <h2 class="register__title">Join the feast</h2>
+      <div class="register__label">Join the Roster</div>
+      <h2 class="register__title">Secure Your Pass</h2>
       <p class="register__body">
-        Registration includes entry to all three days, the sadya feast, and one competitive
-        event of your choice. Seats are limited by campus capacity.
+        Whether you're competing for the ₹5 Lakh prize pool or just here for the vibes and the DJ night, you need a pass. 
+        Squad registrations get a dedicated boot camp slot.
       </p>
       <ul class="register__list">
-        <li>Confirmation sent to your email within 24 hours</li>
-        <li>Campus accommodation available on request</li>
-        <li>Group registrations get a shared table for the sadya</li>
+        <li>Instant QR code delivery to your email</li>
+        <li>On-campus gamer dorms available on request</li>
+        <li>Access to all spectator zones and sponsor booths</li>
       </ul>
     </div>
 
     <form class="register__form" id="regForm">
       <div class="field">
-        <label for="fullName">Full name</label>
-        <input type="text" id="fullName" name="fullName" required placeholder="Anjali Menon">
+        <label for="fullName">Gamer Tag / Full Name</label>
+        <input type="text" id="fullName" name="fullName" required placeholder="ShadowNinja (Rahul)">
       </div>
       <div class="field">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required placeholder="anjali@email.com">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required placeholder="rahul@gaming.com">
       </div>
       <div class="field">
-        <label for="phone">Phone</label>
+        <label for="phone">Phone / WhatsApp</label>
         <input type="tel" id="phone" name="phone" required placeholder="+91 98765 43210">
       </div>
       <div class="field">
@@ -208,44 +592,80 @@
         <input type="text" id="college" name="college" required placeholder="DCSMAT">
       </div>
       <div class="field field--half">
-        <label for="year">Year of study</label>
-        <select id="year" name="year" required>
+        <label for="passType">Pass Type</label>
+        <select id="passType" name="passType" required>
           <option value="" disabled selected>Select</option>
-          <option>1st Year</option>
-          <option>2nd Year</option>
-          <option>3rd Year</option>
-          <option>4th Year</option>
-          <option>PG</option>
+          <option>Spectator Pass</option>
+          <option>Solo Competitor</option>
+          <option>Squad (4-5 Players)</option>
         </select>
       </div>
       <div class="field field--half">
-        <label for="event">Event of choice</label>
+        <label for="event">Primary Event</label>
         <select id="event" name="event" required>
           <option value="" disabled selected>Select</option>
-          <option>Ottamthullal &amp; Folk Arts</option>
-          <option>Battle of Bands</option>
-          <option>Street Play</option>
-          <option>Chox Pox — Culinary Challenge</option>
-          <option>Just the Sadya &amp; Gala</option>
+          <option>Valorant / CS2</option>
+          <option>BGMI / Free Fire</option>
+          <option>FIFA / Console</option>
+          <option>Cosplay Walk</option>
+          <option>Just Here for the DJ</option>
         </select>
       </div>
-      <button type="submit" class="btn btn--gold btn--block">Confirm Registration</button>
-      <p class="field__note" id="formNote">You'll receive a confirmation by email once submitted.</p>
+      <button type="submit" class="btn btn--neon btn--block">Confirm Registration</button>
+      <p class="field__note" id="formNote">Your entry QR will be mailed immediately after verification.</p>
     </form>
   </div>
 </section>
 
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
-  <div class="footer__mark">Luminous&nbsp;Fest</div>
-  <p>DC School of Management &amp; Technology · Vagamon, Idukki, Kerala</p>
+  <div class="footer__mark">Luminance Fest</div>
+  <p>Organized by the UG Students of DCSMAT</p>
+  <p>Vagamon, Idukki, Kerala</p>
   <div class="footer__links">
-    <a href="mailto:luminousfest@dcsmat.ac.in">luminousfest@dcsmat.ac.in</a>
+    <a href="mailto:admin@luminancefest.in">admin@luminancefest.in</a>
     <a href="tel:+914812345678">+91 481 234 5678</a>
+    <a href="#">Discord Server</a>
   </div>
-  <p class="footer__fine">© 2026 Luminous Fest, DCSMAT. All rights reserved.</p>
+  <p class="footer__fine">© 2026 Luminance Fest, DCSMAT. All rights reserved. Play fair, party hard.</p>
 </footer>
 
-<script src="script.js"></script>
+<script>
+  // ---------- Digital Particles Logic ----------
+  const particlesContainer = document.getElementById("particles");
+  if (particlesContainer) {
+    const count = 35;
+    for (let i = 0; i < count; i++) {
+      const drop = document.createElement("span");
+      drop.style.left = Math.random() * 100 + "%";
+      // Randomize animation delay and duration to create a matrix/falling rain effect
+      drop.style.animationDelay = (Math.random() * 4).toFixed(2) + "s";
+      drop.style.animationDuration = (Math.random() * 3 + 2).toFixed(2) + "s";
+      particlesContainer.appendChild(drop);
+    }
+  }
+
+  // ---------- Mobile Nav Toggle ----------
+  const burger = document.getElementById('burger');
+  const navLinks = document.querySelector('.nav__links');
+  
+  if(burger) {
+    burger.addEventListener('click', () => {
+      // Very basic toggle for demonstration
+      if(navLinks.style.display === 'flex') {
+        navLinks.style.display = 'none';
+      } else {
+        navLinks.style.display = 'flex';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.position = 'absolute';
+        navLinks.style.top = '100%';
+        navLinks.style.left = '0';
+        navLinks.style.right = '0';
+        navLinks.style.background = 'rgba(6, 6, 10, 0.95)';
+        navLinks.style.padding = '20px';
+      }
+    });
+  }
+</script>
 </body>
 </html>
