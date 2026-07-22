@@ -1,59 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luminance E-Sports Registration</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 40px 20px;
-        }
-        h1 {
-            color: #39ff14; /* Neon Green */
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        p {
-            color: #a0a0a0;
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-        }
-        /* This wrapper ensures the form is mobile-responsive */
-        .form-container {
-            max-width: 720px;
-            margin: 0 auto;
-            background: #1a1a1a;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
-            border: 1px solid #333;
-        }
-        iframe {
-            width: 100%;
-            min-height: 800px;
-            border: none;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luminous Fest — DCSMAT</title>
+<meta name="description" content="Luminous Fest — Kerala's grandest college feast, hosted at DCSMAT. Register now.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Jost:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>Luminance Fest '26</h1>
-    <p>Official E-Sports Tournament Registration</p>
+<div class="grain"></div>
 
-    <div class="form-container">
-        <!-- PASTE YOUR IFRAME CODE BELOW THIS LINE -->
-        
-        <iframe src="YOUR_FORM_LINK_HERE" title="Registration Form">Loading...</iframe>
-        
-        <!-- PASTE YOUR IFRAME CODE ABOVE THIS LINE -->
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="nav__mark">
+    <span class="nav__flame">◆</span>
+    <span>Luminous&nbsp;Fest</span>
+  </div>
+  <nav class="nav__links">
+    <a href="#about">About</a>
+    <a href="#courses">Schedule</a>
+    <a href="#gallery">Glimpses</a>
+    <a href="#register" class="nav__cta">Register</a>
+  </nav>
+  <button class="nav__burger" id="burger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero__glow" aria-hidden="true"></div>
+
+  <div class="hero__eyebrow">DC School of Management &amp; Technology · Vagamon, Kerala</div>
+
+  <div class="lamp" aria-hidden="true">
+    <svg viewBox="0 0 200 260" class="lamp__svg">
+      <ellipse cx="100" cy="248" rx="70" ry="9" fill="var(--ink)" opacity="0.18"/>
+      <path d="M60 244 Q100 258 140 244 L150 226 Q100 240 50 226 Z" fill="url(#brass2)"/>
+      <path d="M50 226 Q100 240 150 226 L142 206 Q100 220 58 206 Z" fill="url(#brass1)"/>
+      <rect x="96" y="150" width="8" height="60" fill="url(#brass1)"/>
+      <path d="M70 156 Q100 170 130 156 L124 140 Q100 150 76 140 Z" fill="url(#brass1)"/>
+      <path d="M78 140 Q100 150 122 140 Q122 120 100 112 Q78 120 78 140 Z" fill="url(#brass2)"/>
+      <ellipse cx="100" cy="112" rx="22" ry="7" fill="url(#brass1)"/>
+      <path id="flame" d="M100 60 C90 78 84 92 100 108 C116 92 110 78 100 60 Z" fill="url(#flameGrad)"/>
+      <path d="M100 76 C96 86 94 94 100 102 C106 94 104 86 100 76 Z" fill="#FFF4D6" opacity="0.9"/>
+      <defs>
+        <linearGradient id="brass1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#E9C173"/>
+          <stop offset="55%" stop-color="#C79A3F"/>
+          <stop offset="100%" stop-color="#8C6A26"/>
+        </linearGradient>
+        <linearGradient id="brass2" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#8C6A26"/>
+          <stop offset="50%" stop-color="#E9C173"/>
+          <stop offset="100%" stop-color="#8C6A26"/>
+        </linearGradient>
+        <radialGradient id="flameGrad" cx="50%" cy="70%" r="70%">
+          <stop offset="0%" stop-color="#FFF6DE"/>
+          <stop offset="35%" stop-color="#FDCB5D"/>
+          <stop offset="75%" stop-color="#F2A23C"/>
+          <stop offset="100%" stop-color="#D9722B"/>
+        </radialGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <h1 class="hero__title">Luminous<span>Fest</span></h1>
+  <p class="hero__tagline">Kerala's grandest college feast — a night of light, sadya &amp; song</p>
+
+  <div class="hero__meta">
+    <div class="hero__meta-item"><span>Date</span>September 4–6, 2026</div>
+    <div class="hero__meta-divider"></div>
+    <div class="hero__meta-item"><span>Venue</span>DCSMAT Campus, Vagamon</div>
+    <div class="hero__meta-divider"></div>
+    <div class="hero__meta-item"><span>Entry</span>Open to all colleges</div>
+  </div>
+
+  <a href="#register" class="btn btn--gold">Reserve Your Seat</a>
+  <div class="hero__scroll" aria-hidden="true">Scroll<span></span></div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="about__label">The Feast</div>
+  <h2 class="about__title">Where a hundred brass lamps<br>are lit as one</h2>
+  <p class="about__body">
+    Every monsoon's end, DCSMAT turns its courtyard into the state's largest student gathering —
+    equal parts <em>sadya</em>, stage and spectacle. Luminous Fest brings together performers,
+    chefs, makers and dreamers from across Kerala's colleges for three days of competitions,
+    cultural nights and a feast served the traditional way: on banana leaf, under a thousand
+    flickering flames.
+  </p>
+  <div class="about__stats">
+    <div class="stat"><strong>42</strong><span>Colleges expected</span></div>
+    <div class="stat"><strong>18</strong><span>Events &amp; competitions</span></div>
+    <div class="stat"><strong>3</strong><span>Days of festivity</span></div>
+    <div class="stat"><strong>5000+</strong><span>Attendees last year</span></div>
+  </div>
+</section>
+
+<!-- ============ SCHEDULE — served as a sadya ============ -->
+<section class="courses" id="courses">
+  <div class="courses__label">The Spread</div>
+  <h2 class="courses__title">Served in order, as a sadya should be</h2>
+  <p class="courses__sub">Three days, plated course by course.</p>
+
+  <div class="leaf">
+    <div class="course">
+      <div class="course__num">01</div>
+      <div class="course__info">
+        <h3>Inauguration &amp; Lamp Lighting</h3>
+        <p>The traditional nilavilakku is lit to open the fest — Day 1, morning.</p>
+      </div>
+      <div class="course__day">Sep 4 · 9:00 AM</div>
+    </div>
+    <div class="course">
+      <div class="course__num">02</div>
+      <div class="course__info">
+        <h3>Ottamthullal &amp; Folk Arts Competition</h3>
+        <p>Classical and folk performance rounds across the main stage.</p>
+      </div>
+      <div class="course__day">Sep 4 · 11:00 AM</div>
+    </div>
+    <div class="course">
+      <div class="course__num">03</div>
+      <div class="course__info">
+        <h3>Sadya — The Grand Feast</h3>
+        <p>A 26-dish traditional banana-leaf feast for every registered guest.</p>
+      </div>
+      <div class="course__day">Sep 4 · 1:00 PM</div>
+    </div>
+    <div class="course">
+      <div class="course__num">04</div>
+      <div class="course__info">
+        <h3>Battle of Bands &amp; Street Play</h3>
+        <p>Inter-college music and theatre finals under the open sky.</p>
+      </div>
+      <div class="course__day">Sep 5 · 4:00 PM</div>
+    </div>
+    <div class="course">
+      <div class="course__num">05</div>
+      <div class="course__info">
+        <h3>Chox Pox — Culinary Challenge</h3>
+        <p>Live cook-off judged by campus chefs and alumni restaurateurs.</p>
+      </div>
+      <div class="course__day">Sep 5 · 6:00 PM</div>
+    </div>
+    <div class="course">
+      <div class="course__num">06</div>
+      <div class="course__info">
+        <h3>Luminous Night — Closing Gala</h3>
+        <p>Fireworks, headline performances and the closing lamp ceremony.</p>
+      </div>
+      <div class="course__day">Sep 6 · 7:00 PM</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery" id="gallery">
+  <div class="gallery__label">Glimpses</div>
+  <h2 class="gallery__title">Last year, in brief</h2>
+  <div class="gallery__grid">
+    <div class="gallery__tile gallery__tile--a"><span>Lamp Lighting Ceremony</span></div>
+    <div class="gallery__tile gallery__tile--b"><span>The Grand Sadya</span></div>
+    <div class="gallery__tile gallery__tile--c"><span>Battle of Bands Finals</span></div>
+    <div class="gallery__tile gallery__tile--d"><span>Closing Fireworks</span></div>
+  </div>
+</section>
+
+<!-- ============ REGISTER ============ -->
+<section class="register" id="register">
+  <div class="register__inner">
+    <div class="register__side">
+      <div class="register__label">Reserve Your Seat</div>
+      <h2 class="register__title">Join the feast</h2>
+      <p class="register__body">
+        Registration includes entry to all three days, the sadya feast, and one competitive
+        event of your choice. Seats are limited by campus capacity.
+      </p>
+      <ul class="register__list">
+        <li>Confirmation sent to your email within 24 hours</li>
+        <li>Campus accommodation available on request</li>
+        <li>Group registrations get a shared table for the sadya</li>
+      </ul>
     </div>
 
+    <form class="register__form" id="regForm">
+      <div class="field">
+        <label for="fullName">Full name</label>
+        <input type="text" id="fullName" name="fullName" required placeholder="Anjali Menon">
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="anjali@email.com">
+      </div>
+      <div class="field">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" required placeholder="+91 98765 43210">
+      </div>
+      <div class="field">
+        <label for="college">College / Institution</label>
+        <input type="text" id="college" name="college" required placeholder="DCSMAT">
+      </div>
+      <div class="field field--half">
+        <label for="year">Year of study</label>
+        <select id="year" name="year" required>
+          <option value="" disabled selected>Select</option>
+          <option>1st Year</option>
+          <option>2nd Year</option>
+          <option>3rd Year</option>
+          <option>4th Year</option>
+          <option>PG</option>
+        </select>
+      </div>
+      <div class="field field--half">
+        <label for="event">Event of choice</label>
+        <select id="event" name="event" required>
+          <option value="" disabled selected>Select</option>
+          <option>Ottamthullal &amp; Folk Arts</option>
+          <option>Battle of Bands</option>
+          <option>Street Play</option>
+          <option>Chox Pox — Culinary Challenge</option>
+          <option>Just the Sadya &amp; Gala</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn--gold btn--block">Confirm Registration</button>
+      <p class="field__note" id="formNote">You'll receive a confirmation by email once submitted.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__mark">Luminous&nbsp;Fest</div>
+  <p>DC School of Management &amp; Technology · Vagamon, Idukki, Kerala</p>
+  <div class="footer__links">
+    <a href="mailto:luminousfest@dcsmat.ac.in">luminousfest@dcsmat.ac.in</a>
+    <a href="tel:+914812345678">+91 481 234 5678</a>
+  </div>
+  <p class="footer__fine">© 2026 Luminous Fest, DCSMAT. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
