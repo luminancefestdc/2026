@@ -1,73 +1,42 @@
-# Luminous Fest — Registration Site
+# 🎮 Luminance Fest 2026 
 
-A single-page registration site for **Luminous Fest**, DCSMAT's annual college feast.
-Static HTML/CSS/JS — no build step, ready for GitHub Pages.
+![Status](https://img.shields.io/badge/Status-Active-success) 
+![Version](https://img.shields.io/badge/Version-1.0-blue)
+![Tech Stack](https://img.shields.io/badge/Tech-HTML5%20|%20CSS3%20|%20JS-black)
 
-## File structure
-```
-luminous-fest/
-├── index.html   # all page content
-├── style.css    # design system (colors, type, layout, animation)
-└── script.js    # scroll reveals, mobile nav, registration form logic
-```
+The official landing page for **Luminance Fest**, South India's biggest e-sports tournament and youth festival. Entirely organized and driven by the UG Students of DCSMAT Vagamon, Kerala.
 
-## 1. Put it on GitHub
+This project features a high-contrast, professional "pro-league" e-sports aesthetic using a Crimson Red, Obsidian Black, and Pure White color palette.
 
-```bash
-cd luminous-fest
-git init
-git add .
-git commit -m "Luminous Fest site"
-git branch -M main
-git remote add origin https://github.com/<your-username>/luminous-fest.git
-git push -u origin main
-```
+## ✨ Features
 
-## 2. Turn on GitHub Pages
+* **Pro E-Sports Aesthetic:** Aggressive, tactical styling inspired by major global tournaments (VCT, ESL).
+* **Fully Responsive:** Adapts seamlessly to desktop monitors, tablets, and mobile devices.
+* **Infinite Marquee Ticker:** CSS-only scrolling banner for game titles.
+* **Glassmorphism Nav:** Blurred, sticky navigation bar for modern UI feel.
+* **Zero Dependencies:** Built entirely with raw HTML, CSS, and Vanilla JavaScript. No heavy frameworks or libraries required.
 
-1. On GitHub, open your repo → **Settings → Pages**.
-2. Under "Build and deployment", set **Source** to `Deploy from a branch`.
-3. Pick branch `main`, folder `/ (root)`, then **Save**.
-4. Your site will be live in a minute or two at:
-   `https://<your-username>.github.io/luminous-fest/`
+## 🛠️ Tech Stack
 
-## 3. Make the registration form actually collect entries
+* **HTML5:** Semantic structure and layout.
+* **CSS3:** Custom styling, CSS Grid/Flexbox, animations, and custom scrollbars.
+* **Vanilla JavaScript:** Lightweight DOM manipulation for the mobile navigation menu.
+* **Typography:** [Anton](https://fonts.google.com/specimen/Anton) (Headings) & [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk) (Body) via Google Fonts.
 
-The form currently just shows a success message locally — it doesn't send data
-anywhere yet, since GitHub Pages only hosts static files (no backend). Pick one:
+## 🚀 How to Run Locally
 
-**Option A — Formspree (fastest, free tier available)**
-1. Create a form at [formspree.io](https://formspree.io) and copy your endpoint,
-   e.g. `https://formspree.io/f/xxxxxxx`.
-2. In `script.js`, set:
-   ```js
-   const FORM_ENDPOINT = "https://formspree.io/f/xxxxxxx";
-   ```
-3. Done — submissions will land in your Formspree dashboard and can email you.
+Because this project uses vanilla web technologies, setting it up is incredibly simple:
 
-**Option B — Google Form embed**
-Swap the `<form id="regForm">` block in `index.html` for an `<iframe>` embed of
-a Google Form. Simpler, but styling is limited to Google's own form theme.
+1. **Download or Clone** this repository to your local machine.
+2. Open the project folder.
+3. Double-click `index.html` to open it in your default web browser (Chrome, Safari, Firefox, Edge).
 
-**Option C — Your own backend**
-Point `FORM_ENDPOINT` at any API you control that accepts a POST with form data.
+*Note: The JavaScript for the mobile menu is embedded directly at the bottom of the `index.html` file, so no external `.js` files need to be linked or hosted.*
 
-## 4. Customize content
+## 📁 File Structure
 
-- **Dates, venue, event list** — edit directly in `index.html` (hero meta and
-  the `.courses` section).
-- **Colors** — all defined as CSS variables at the top of `style.css` under
-  `:root`. Change `--maroon`, `--gold`, `--green` etc. to retheme everything.
-- **Fonts** — Fraunces (display), Jost (body), DM Mono (labels/numerals),
-  loaded from Google Fonts in `index.html`.
-- **Gallery photos** — the four tiles in `.gallery__grid` are currently color
-  blocks with captions; swap in real photos by adding
-  `background-image: url("your-photo.jpg")` to each `.gallery__tile` in
-  `style.css`, or replace with `<img>` tags.
-
-## Notes
-- Fully responsive down to mobile, with a slide-down nav on small screens.
-- Respects `prefers-reduced-motion` — animations turn off automatically for
-  users who've requested that.
-- No frameworks or build tools — just open `index.html` in a browser to
-  preview locally.
+```text
+luminance-fest/
+│
+├── index.html       # The main website file (contains HTML, CSS, and JS)
+└── README.md        # Project documentation
