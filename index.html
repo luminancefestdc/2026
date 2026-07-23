@@ -599,38 +599,38 @@ footer p { color: #666; font-size: 0.95rem; }
     </ul>
   </div>
 
-  <form class="reg-form">
+  <form class="reg-form" action="https://formspree.io/f/mbdnaekw" method="POST">
     <div class="form-row">
       <div class="input-group">
         <label>In-Game Name (IGN)</label>
-        <input type="text" placeholder="e.g. TenZ" required>
+        <input type="text" name="ign" placeholder="e.g. TenZ" required>
       </div>
       <div class="input-group">
         <label>Real Name</label>
-        <input type="text" placeholder="John Doe" required>
+        <input type="text" name="real_name" placeholder="John Doe" required>
       </div>
     </div>
     
     <div class="form-row">
       <div class="input-group">
         <label>College / Institution</label>
-        <input type="text" placeholder="Enter College Name" required>
+        <input type="text" name="college" placeholder="Enter College Name" required>
       </div>
       <div class="input-group">
         <label>Contact Number</label>
-        <input type="tel" placeholder="+91 XXXXX XXXXX" required>
+        <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required>
       </div>
     </div>
 
     <div class="input-group">
       <label>Select Tournament</label>
-      <select required>
+      <select name="tournament" required>
         <option value="" disabled selected>CHOOSE YOUR GAME</option>
-        <option>VALORANT (Squad)</option>
-        <option>BGMI (Squad)</option>
-        <option>CS2 (Squad)</option>
-        <option>E-FOOTBALL (Solo)</option>
-        <option>SPECTATOR PASS ONLY</option>
+        <option value="Valorant">VALORANT (Squad)</option>
+        <option value="BGMI">BGMI (Squad)</option>
+        <option value="CS2">CS2 (Squad)</option>
+        <option value="E-Football">E-FOOTBALL (Solo)</option>
+        <option value="Spectator">SPECTATOR PASS ONLY</option>
       </select>
     </div>
 
