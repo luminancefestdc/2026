@@ -7,30 +7,28 @@
 <meta name="description" content="Luminance Fest by DCSMAT Vagamon UG Students. South India's premier E-Sports tournament and youth festival.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Using Anton for massive, aggressive headers and Space Grotesk for sleek, tech-focused body text -->
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 /* =========================================================
-   LUMINANCE FEST — PRO LEAGUE EDITION
-   Palette: Obsidian Black, Crimson Red, Concrete White
-   Vibe: High-stakes E-sports, Tactical, Modern Youth
+   LUMINANCE FEST — ULTRA PREMIUM EDITION
 ========================================================= */
 :root {
-  --black: #09090B;
-  --dark-grey: #18181B;
+  --black: #050505;
+  --dark-grey: #111113;
+  --card-bg: #16161a;
   --white: #FFFFFF;
   --off-white: #E4E4E7;
-  --red: #FF4655; /* Tactical striking red */
-  --red-hover: #D13643;
-  --border-color: rgba(255,255,255,0.1);
+  --red: #FF2A40; /* Brighter, more electric neon red */
+  --red-glow: rgba(255, 42, 64, 0.4);
+  --border-color: rgba(255,255,255,0.08);
 
   --display: 'Anton', sans-serif;
   --body: 'Space Grotesk', sans-serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 body {
   background-color: var(--black);
   color: var(--off-white);
@@ -41,9 +39,9 @@ body {
 }
 
 /* Custom Scrollbar */
-::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--black); }
-::-webkit-scrollbar-thumb { background: var(--red); }
+::-webkit-scrollbar-thumb { background: var(--red); border-radius: 4px; }
 ::selection { background: var(--red); color: var(--white); }
 
 /* ============ NAV ============ */
@@ -54,34 +52,45 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 5vw;
-  background: rgba(9, 9, 11, 0.85);
-  backdrop-filter: blur(10px);
+  background: rgba(5, 5, 5, 0.7);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   border-bottom: 1px solid var(--border-color);
   z-index: 1000;
+  transition: all 0.3s ease;
 }
 .logo {
   font-family: var(--display);
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: var(--white);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-.logo span { color: var(--red); }
-.nav-links {
-  display: flex;
-  gap: 40px;
-}
-.nav-links a {
-  color: var(--white);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(255,255,255,0.1);
+}
+.logo span { color: var(--red); text-shadow: 0 0 15px var(--red-glow); }
+.nav-links { display: flex; gap: 40px; }
+.nav-links a {
+  color: var(--off-white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
   transition: color 0.3s;
 }
-.nav-links a:hover { color: var(--red); }
-.mobile-menu { display: none; color: var(--white); font-size: 1.5rem; cursor: pointer; background: none; border: none; }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -6px; left: 0; width: 0%; height: 2px;
+  background: var(--red);
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px var(--red);
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { width: 100%; }
+.mobile-menu { display: none; color: var(--white); font-size: 1.8rem; cursor: pointer; background: none; border: none; transition: 0.3s; }
+.mobile-menu:hover { color: var(--red); }
 
 /* ============ BUTTONS ============ */
 .btn {
@@ -91,19 +100,28 @@ header {
   font-family: var(--body);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  padding: 16px 40px;
+  letter-spacing: 3px;
+  padding: 18px 45px;
   border: none;
   cursor: pointer;
   text-decoration: none;
-  /* Slanted edge effect */
-  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
-  transition: all 0.3s ease;
+  clip-path: polygon(15px 0, 100% 0, calc(100% - 15px) 100%, 0 100%);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 0 20px var(--red-glow);
+  position: relative;
+  overflow: hidden;
 }
+.btn::before {
+  content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: all 0.5s ease;
+}
+.btn:hover::before { left: 100%; }
 .btn:hover {
   background: var(--white);
   color: var(--black);
-  transform: scale(1.05);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
 }
 
 /* ============ HERO SECTION ============ */
@@ -115,73 +133,79 @@ header {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 140px 5vw 100px;
-  /* Grid background */
-  background-image: 
+  padding: 160px 5vw 100px;
+  background: 
+    radial-gradient(circle at center, rgba(255, 42, 64, 0.15) 0%, transparent 50%),
     linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
+  background-size: 100% 100%, 50px 50px, 50px 50px;
 }
 .hero-badge {
-  background: rgba(255, 70, 85, 0.1);
+  background: rgba(255, 42, 64, 0.05);
   color: var(--red);
-  padding: 8px 16px;
+  padding: 8px 20px;
   font-weight: 700;
+  font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   border: 1px solid var(--red);
-  margin-bottom: 30px;
+  border-radius: 50px;
+  margin-bottom: 40px;
   animation: fade-in-up 1s ease;
+  box-shadow: 0 0 15px var(--red-glow);
 }
 .hero-title {
   font-family: var(--display);
-  font-size: clamp(4rem, 12vw, 10rem);
+  font-size: clamp(4.5rem, 12vw, 11rem);
   line-height: 0.9;
   color: var(--white);
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   animation: fade-in-up 1.2s ease;
+  text-shadow: 0 10px 40px rgba(0,0,0,0.8);
 }
 .hero-title .outline {
-  -webkit-text-stroke: 2px var(--white);
+  -webkit-text-stroke: 2px rgba(255,255,255,0.8);
   color: transparent;
   display: block;
 }
 .hero-sub {
   font-size: clamp(1rem, 2vw, 1.2rem);
-  color: var(--off-white);
-  max-width: 600px;
+  color: #a0a0a0;
+  max-width: 650px;
   margin: 0 auto 50px;
   animation: fade-in-up 1.4s ease;
+  font-weight: 500;
 }
-
-/* New Bold Statement replacing the stats */
 .hero-statement {
   font-family: var(--display);
-  font-size: clamp(2rem, 6vw, 4.5rem);
-  color: var(--white);
+  font-size: clamp(2.5rem, 6vw, 5rem);
   text-transform: uppercase;
   line-height: 1.1;
-  margin-bottom: 50px;
-  letter-spacing: 1px;
+  margin-bottom: 60px;
+  letter-spacing: 2px;
   animation: fade-in-up 1.6s ease;
-  max-width: 1200px;
-  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  /* Cinematic text gradient */
+  background: linear-gradient(180deg, #FFFFFF 0%, #71717A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .hero-statement span {
-  color: var(--red);
+  background: linear-gradient(180deg, #FF2A40 0%, #8A0010 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
 }
 
 /* ============ MARQUEE (TICKER) ============ */
 .marquee-wrapper {
   background: var(--red);
-  padding: 15px 0;
-  transform: skewY(-2deg);
-  margin-top: -30px;
+  padding: 18px 0;
+  transform: skewY(-1.5deg);
+  margin-top: -40px;
   position: relative;
   z-index: 10;
-  border-top: 4px solid var(--white);
-  border-bottom: 4px solid var(--white);
+  box-shadow: 0 0 30px var(--red-glow);
 }
 .marquee {
   white-space: nowrap;
@@ -190,11 +214,12 @@ header {
 }
 .marquee span {
   font-family: var(--display);
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: var(--black);
   text-transform: uppercase;
   padding-right: 50px;
-  animation: scroll 15s linear infinite;
+  animation: scroll 20s linear infinite;
+  letter-spacing: 2px;
 }
 @keyframes scroll {
   0% { transform: translateX(0); }
@@ -203,60 +228,81 @@ header {
 
 /* ============ ABOUT SECTION ============ */
 .about {
-  padding: 120px 5vw;
+  padding: 150px 5vw;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 80px;
   align-items: center;
   max-width: 1400px;
   margin: 0 auto;
 }
 .section-title {
   font-family: var(--display);
-  font-size: clamp(3rem, 5vw, 5rem);
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
   color: var(--white);
-  line-height: 1;
+  line-height: 0.95;
   margin-bottom: 30px;
   text-transform: uppercase;
 }
+.section-title span { color: var(--red); }
 .about-text p {
-  font-size: 1.1rem;
-  margin-bottom: 20px;
+  font-size: 1.15rem;
+  margin-bottom: 25px;
   color: #a0a0a0;
 }
-.about-text p strong { color: var(--white); }
+.about-text p strong { color: var(--white); font-weight: 700; }
 .about-visual {
   background: var(--dark-grey);
-  height: 400px;
+  height: 450px;
   position: relative;
-  border: 1px solid var(--border-color);
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid var(--border-color);
 }
 .about-visual::after {
   content: 'DCSMAT';
   font-family: var(--display);
-  font-size: 8rem;
-  color: rgba(255,255,255,0.02);
+  font-size: 9rem;
+  color: rgba(255,255,255,0.03);
   position: absolute;
   transform: rotate(-90deg);
-  left: -80px;
+  left: -100px;
+  pointer-events: none;
+}
+/* Cyberpunk Image Overlay */
+.about-visual .img-wrapper {
+  width: 100%; height: 100%;
+  position: relative;
+}
+.about-visual .img-wrapper::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--red);
+  mix-blend-mode: overlay;
+  opacity: 0.2;
+  z-index: 2;
+}
+.about-visual img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(100%) contrast(1.2);
 }
 .crosshair {
-  width: 40px; height: 40px;
+  width: 50px; height: 50px;
   border: 2px solid var(--red);
   position: absolute;
+  z-index: 3;
+  box-shadow: 0 0 10px var(--red-glow);
 }
-.c-top-left { top: 20px; left: 20px; border-right: none; border-bottom: none; }
-.c-bottom-right { bottom: 20px; right: 20px; border-left: none; border-top: none; }
+.c-top-left { top: -10px; left: -10px; border-right: none; border-bottom: none; }
+.c-bottom-right { bottom: -10px; right: -10px; border-left: none; border-top: none; }
 
 /* ============ TOURNAMENTS SECTION ============ */
 .tournaments {
   background: var(--dark-grey);
-  padding: 120px 5vw;
+  padding: 150px 5vw;
+  position: relative;
 }
-.tournaments-container { max-width: 1400px; margin: 0 auto; }
+.tournaments-container { max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -264,113 +310,166 @@ header {
   margin-top: 60px;
 }
 .card {
-  background: var(--black);
+  background: var(--card-bg);
   border: 1px solid var(--border-color);
   padding: 50px 40px;
   position: relative;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+}
+/* Futuristic Card Accents */
+.card::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 30px; height: 30px;
+  border-top: 2px solid transparent; border-left: 2px solid transparent;
+  transition: 0.4s;
+}
+.card::after {
+  content: ''; position: absolute; bottom: 0; right: 0; width: 30px; height: 30px;
+  border-bottom: 2px solid transparent; border-right: 2px solid transparent;
+  transition: 0.4s;
 }
 .card:hover {
-  border-color: var(--red);
   transform: translateY(-10px);
+  background: #1a1a1f;
+  border-color: rgba(255, 42, 64, 0.3);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(255, 42, 64, 0.1);
 }
+.card:hover::before { border-color: var(--red); }
+.card:hover::after { border-color: var(--red); }
+
 .card-tag {
   position: absolute;
   top: 0; right: 20px;
   background: var(--red);
   color: var(--white);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  padding: 8px 12px;
+  padding: 8px 15px;
   text-transform: uppercase;
+  letter-spacing: 1px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 10px 100%);
 }
 .card h3 {
   font-family: var(--display);
-  font-size: 3rem;
+  font-size: 3.5rem;
   color: var(--white);
   margin-bottom: 15px;
   line-height: 1;
+  text-shadow: 2px 2px 0px rgba(0,0,0,1);
 }
-.card p { color: #a0a0a0; font-size: 0.95rem; margin-bottom: 20px; }
+.card p { color: #888; font-size: 0.95rem; margin-bottom: 30px; line-height: 1.5; }
 .card-details {
   display: flex;
   justify-content: space-between;
   border-top: 1px solid var(--border-color);
   padding-top: 20px;
   font-family: var(--display);
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
 }
 .card-details span { color: var(--red); }
 
 /* ============ REGISTRATION FORM ============ */
 .register {
-  padding: 120px 5vw;
+  padding: 150px 5vw;
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.2fr;
   gap: 80px;
 }
-.reg-form {
-  background: var(--dark-grey);
-  padding: 50px;
-  border-top: 6px solid var(--red);
+.reg-info ul { list-style: none; color: var(--white); margin-bottom: 40px; }
+.reg-info li {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
-.input-group { margin-bottom: 25px; }
+.reg-info li::before {
+  content: '■'; color: var(--red); font-size: 1.2rem;
+}
+
+.reg-form {
+  background: var(--card-bg);
+  padding: 60px 50px;
+  border: 1px solid var(--border-color);
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+/* Top glowing line for form */
+.reg-form::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--red), transparent);
+}
+.input-group { margin-bottom: 30px; position: relative; }
 .input-group label {
-  display: block; margin-bottom: 10px; color: var(--white); font-weight: 600;
-  text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;
+  display: block; margin-bottom: 10px; color: #a0a0a0; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem;
+  transition: 0.3s;
 }
 .input-group input, .input-group select {
   width: 100%;
-  background: var(--black);
-  border: 1px solid var(--border-color);
+  background: rgba(255,255,255,0.02);
+  border: none;
+  border-bottom: 2px solid var(--border-color);
   color: var(--white);
-  padding: 16px;
+  padding: 15px 20px;
   font-family: var(--body);
-  font-size: 1rem;
+  font-size: 1.1rem;
   outline: none;
-  transition: 0.3s ease;
+  transition: all 0.3s ease;
 }
 .input-group input:focus, .input-group select:focus {
-  border-color: var(--red);
-  box-shadow: 0 0 15px rgba(255, 70, 85, 0.2);
+  background: rgba(255, 42, 64, 0.05);
+  border-bottom-color: var(--red);
 }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.input-group input:focus + label, .input-group input:not(:placeholder-shown) + label {
+  color: var(--red);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+select option { background: var(--black); color: var(--white); }
 
 /* ============ FOOTER ============ */
 footer {
   background: var(--black);
   border-top: 1px solid var(--border-color);
-  padding: 60px 5vw;
+  padding: 80px 5vw 40px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 footer h2 {
-  font-family: var(--display); font-size: 2rem; color: var(--white); margin-bottom: 10px; text-transform: uppercase;
+  font-family: var(--display); font-size: 3rem; color: var(--white); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px;
 }
-footer p { color: #a0a0a0; font-size: 0.9rem; }
-.footer-links { margin: 30px 0; }
+footer h2 span { color: var(--red); }
+footer p { color: #666; font-size: 0.95rem; }
+.footer-links { margin: 40px 0; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
 .footer-links a {
-  color: var(--white); margin: 0 15px; text-transform: uppercase; font-weight: 700; text-decoration: none; font-size: 0.9rem;
+  color: var(--off-white); text-transform: uppercase; font-weight: 700; text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: 0.3s;
 }
-.footer-links a:hover { color: var(--red); }
+.footer-links a:hover { color: var(--red); text-shadow: 0 0 10px var(--red-glow); }
+.copyright { opacity: 0.4; font-size: 0.8rem !important; margin-top: 40px; }
 
 /* ============ ANIMATIONS ============ */
 @keyframes fade-in-up {
-  0% { opacity: 0; transform: translateY(30px); }
+  0% { opacity: 0; transform: translateY(40px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
 /* ============ RESPONSIVE ============ */
-@media (max-width: 992px) {
-  .about, .register { grid-template-columns: 1fr; gap: 50px; }
+@media (max-width: 1024px) {
+  .about, .register { grid-template-columns: 1fr; gap: 60px; }
+  .about-visual { height: 400px; }
+  .reg-form { padding: 40px 30px; }
+}
+@media (max-width: 768px) {
   .nav-links { display: none; }
   .mobile-menu { display: block; }
-}
-@media (max-width: 600px) {
-  .form-row { grid-template-columns: 1fr; }
-  .card { padding: 30px 20px; }
-  .reg-form { padding: 30px 20px; }
+  .hero { padding: 140px 5vw 80px; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .card h3 { font-size: 2.8rem; }
+  .section-title { font-size: 2.8rem; }
 }
 </style>
 </head>
@@ -381,7 +480,7 @@ footer p { color: #a0a0a0; font-size: 0.9rem; }
   <div class="logo">Luminance<span>Fest</span></div>
   <nav class="nav-links">
     <a href="#about">The Arena</a>
-    <a href="#tournaments">Tournaments</a>
+    <a href="#tournaments">Battlegrounds</a>
     <a href="#register">Register</a>
   </nav>
   <button class="mobile-menu">☰</button>
@@ -398,7 +497,6 @@ footer p { color: #a0a0a0; font-size: 0.9rem; }
   
   <p class="hero-sub">Welcome to the apex of South Indian competitive gaming. Held at the high-altitude arena of DCSMAT Vagamon. No lag. No excuses. Pure glory.</p>
   
-  <!-- New Bold Statement replacing the stats -->
   <h2 class="hero-statement">
     Survive The Drop.<br>
     <span>Dominate The Lobby.</span>
@@ -410,40 +508,39 @@ footer p { color: #a0a0a0; font-size: 0.9rem; }
 <!-- MARQUEE TICKER -->
 <div class="marquee-wrapper">
   <div class="marquee">
-    <!-- Duplicated for seamless scrolling -->
-    <span>BGMI // VALORANT // CS2 // E-FOOTBALL // FREE FIRE // FIFA 26 //</span>
-    <span>BGMI // VALORANT // CS2 // E-FOOTBALL // FREE FIRE // FIFA 26 //</span>
-    <span>BGMI // VALORANT // CS2 // E-FOOTBALL // FREE FIRE // FIFA 26 //</span>
-    <span>BGMI // VALORANT // CS2 // E-FOOTBALL // FREE FIRE // FIFA 26 //</span>
+    <span>BGMI // VALORANT // CS2 // E-FOOTBALL // FREE FIRE // FIFA 26 // BGMI // VALORANT // CS2 // E-FOOTBALL // FREE FIRE // FIFA 26 //</span>
+    <span>BGMI // VALORANT // CS2 // E-FOOTBALL // FREE FIRE // FIFA 26 // BGMI // VALORANT // CS2 // E-FOOTBALL // FREE FIRE // FIFA 26 //</span>
   </div>
 </div>
 
 <!-- ABOUT SECTION -->
 <section class="about" id="about">
   <div class="about-text">
-    <h2 class="section-title">Built By Players.<br>For Players.</h2>
+    <h2 class="section-title">Built By Players.<br><span>For Players.</span></h2>
     <p>Driven entirely by the <strong>UG Students of DCSMAT Vagamon</strong>, Luminance Fest has leveled up from a standard college gathering into Kerala’s most aggressive, high-stakes e-sports tournament.</p>
     <p>We’ve transformed our mountain campus into a massive LAN battleground. Whether you are a tactical shooter mastermind, a mobile battle royale survivor, or a console god, this is where South India's legends are crowned.</p>
-    <a href="#tournaments" class="btn" style="margin-top: 20px;">View Brackets</a>
+    <a href="#tournaments" class="btn" style="margin-top: 25px;">View Brackets</a>
   </div>
   <div class="about-visual">
     <div class="crosshair c-top-left"></div>
     <div class="crosshair c-bottom-right"></div>
-    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gaming Setup" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6; filter: grayscale(100%) contrast(1.2);">
+    <div class="img-wrapper">
+      <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Gaming Setup">
+    </div>
   </div>
 </section>
 
 <!-- TOURNAMENTS SECTION -->
 <section class="tournaments" id="tournaments">
   <div class="tournaments-container">
-    <h2 class="section-title">The Battlegrounds</h2>
+    <h2 class="section-title">The <span>Battlegrounds</span></h2>
     <div class="grid">
       
       <!-- Card 1 -->
       <div class="card">
         <div class="card-tag">PC LAN</div>
         <h3>Valorant</h3>
-        <p>5v5 Tactical Shooter. Bring your squad to the main stage and secure the spike.</p>
+        <p>5v5 Tactical Shooter. Bring your squad to the main stage and secure the spike under the stadium lights.</p>
         <div class="card-details">
           <div>Format: <span>Single Elim</span></div>
           <div>Prize: <span>₹1,00,000</span></div>
@@ -454,7 +551,7 @@ footer p { color: #a0a0a0; font-size: 0.9rem; }
       <div class="card">
         <div class="card-tag">Mobile</div>
         <h3>BGMI</h3>
-        <p>Survive the zone. 100 players drop in, but only one squad lifts the trophy.</p>
+        <p>Survive the zone. 100 players drop in, but only one squad gets to lift the ultimate trophy.</p>
         <div class="card-details">
           <div>Format: <span>Squads</span></div>
           <div>Prize: <span>₹1,50,000</span></div>
@@ -465,7 +562,7 @@ footer p { color: #a0a0a0; font-size: 0.9rem; }
       <div class="card">
         <div class="card-tag">PC LAN</div>
         <h3>CS 2</h3>
-        <p>The classic returns. Flashbangs, smokes, and pure aim required.</p>
+        <p>The classic returns. Flashbangs, smokes, and pure unadulterated mechanical aim required.</p>
         <div class="card-details">
           <div>Format: <span>5v5</span></div>
           <div>Prize: <span>₹75,000</span></div>
@@ -476,7 +573,7 @@ footer p { color: #a0a0a0; font-size: 0.9rem; }
       <div class="card">
         <div class="card-tag">Console</div>
         <h3>E-Football</h3>
-        <p>1v1 virtual pitch action. No excuses, just pure stick skills on the big screen.</p>
+        <p>1v1 virtual pitch action. No excuses, just pure stick skills on the massive main stage screen.</p>
         <div class="card-details">
           <div>Format: <span>1v1</span></div>
           <div>Prize: <span>₹40,000</span></div>
@@ -490,14 +587,15 @@ footer p { color: #a0a0a0; font-size: 0.9rem; }
 <!-- REGISTRATION SECTION -->
 <section class="register" id="register">
   <div class="reg-info">
-    <h2 class="section-title">Secure Your Drop Location</h2>
-    <p style="color: #a0a0a0; font-size: 1.1rem; margin-bottom: 30px;">
-      Slots are limited. Register your squad now to lock in your position for the qualifiers. Registration includes dorm access, meals, and entry to the after-party DJ night.
+    <h2 class="section-title">Secure Your<br><span>Drop Location</span></h2>
+    <p style="color: #888; font-size: 1.15rem; margin-bottom: 40px; max-width: 90%;">
+      Slots are heavily limited. Register your squad now to lock in your position for the qualifiers. Registration includes dorm access, meals, and entry to the after-party DJ night.
     </p>
-    <ul style="list-style: none; color: var(--white); margin-bottom: 40px;">
-      <li style="margin-bottom: 15px;">✓ Campus accommodation provided</li>
-      <li style="margin-bottom: 15px;">✓ Access to warm-up PCs</li>
-      <li style="margin-bottom: 15px;">✓ Exclusive UG Student Event</li>
+    <ul>
+      <li>Campus accommodation provided</li>
+      <li>Access to high-refresh warm-up PCs</li>
+      <li>Exclusive UG Student Event Access</li>
+      <li>Official Luminance Fest Merch Kit</li>
     </ul>
   </div>
 
@@ -536,24 +634,25 @@ footer p { color: #a0a0a0; font-size: 0.9rem; }
       </select>
     </div>
 
-    <button type="submit" class="btn" style="width: 100%; text-align: center; margin-top: 10px;">Lock In Registration</button>
+    <button type="submit" class="btn" style="width: 100%; text-align: center; margin-top: 15px; font-size: 1.1rem;">Lock In Registration</button>
   </form>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <h2>Luminance Fest 2026</h2>
-  <p>Organized by the UG Students of DCSMAT Vagamon, Kerala.</p>
+  <h2>Luminance <span>Fest 2026</span></h2>
+  <p>Forged by the UG Students of DCSMAT Vagamon, Kerala.</p>
   <div class="footer-links">
     <a href="#">Rules & Discord</a>
     <a href="#">Campus Map</a>
+    <a href="#">Tournament Brackets</a>
     <a href="#">Contact Admins</a>
   </div>
-  <p style="opacity: 0.5; font-size: 0.8rem;">© 2026 Luminance Fest E-Sports. All rights reserved.</p>
+  <p class="copyright">© 2026 Luminance Fest E-Sports. All rights reserved.</p>
 </footer>
 
 <script>
-  // Simple mobile menu toggle functionality
+  // Mobile menu logic with sleek dark overlay
   document.querySelector('.mobile-menu').addEventListener('click', function() {
     const nav = document.querySelector('.nav-links');
     if (nav.style.display === 'flex') {
@@ -565,8 +664,22 @@ footer p { color: #a0a0a0; font-size: 0.9rem; }
       nav.style.top = '100%';
       nav.style.left = '0';
       nav.style.width = '100%';
-      nav.style.background = 'rgba(9, 9, 11, 0.95)';
-      nav.style.padding = '20px';
+      nav.style.background = 'rgba(5, 5, 5, 0.98)';
+      nav.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+      nav.style.padding = '30px 20px';
+      nav.style.boxShadow = '0 20px 40px rgba(0,0,0,0.8)';
+    }
+  });
+
+  // Smooth blur navbar on scroll
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+      header.style.background = 'rgba(5, 5, 5, 0.85)';
+      header.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.5)';
+    } else {
+      header.style.background = 'rgba(5, 5, 5, 0.7)';
+      header.style.boxShadow = 'none';
     }
   });
 </script>
