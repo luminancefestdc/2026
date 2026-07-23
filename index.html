@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LUMINANCE FEST 2026 | Kerala's Biggest E-Sports Collision</title>
+<title>LUMINANCE FEST 2026| Kerala's Biggest E-Sports Collision</title>
 <meta name="description" content="Luminance Fest by DCSMAT Vagamon UG Students. South India's premier E-Sports tournament and youth festival.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,24 +11,23 @@
 
 <style>
 /* =========================================================
-   LUMINANCE FEST — V3 CYBERPUNK EDITION
+   LUMINANCE FEST — ULTRA PREMIUM EDITION
 ========================================================= */
 :root {
   --black: #050505;
-  --dark-grey: #0a0a0c;
-  --card-bg: #121215;
+  --dark-grey: #111113;
+  --card-bg: #16161a;
   --white: #FFFFFF;
   --off-white: #E4E4E7;
-  --red: #FF2A40; 
-  --red-glow: rgba(255, 42, 64, 0.5);
-  --alert-yellow: #FFB800;
+  --red: #FF2A40; /* Brighter, more electric neon red */
+  --red-glow: rgba(255, 42, 64, 0.4);
   --border-color: rgba(255,255,255,0.08);
 
   --display: 'Anton', sans-serif;
   --body: 'Space Grotesk', sans-serif;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; cursor: none; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 body {
   background-color: var(--black);
@@ -37,31 +36,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  /* Digital Grid Background */
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 50px 50px;
 }
-
-/* ============ CUSTOM GAMING CURSOR ============ */
-.cursor-dot {
-  width: 8px; height: 8px; background: var(--red);
-  position: fixed; top: 0; left: 0; border-radius: 50%;
-  pointer-events: none; z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s, background 0.2s;
-}
-.cursor-outline {
-  width: 40px; height: 40px; border: 2px solid var(--red-glow);
-  position: fixed; top: 0; left: 0; border-radius: 50%;
-  pointer-events: none; z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s, border-color 0.2s;
-  transition-timing-function: ease-out;
-}
-body.hovering .cursor-dot { width: 12px; height: 12px; background: var(--white); box-shadow: 0 0 10px var(--white); }
-body.hovering .cursor-outline { width: 60px; height: 60px; border-color: var(--red); transform: translate(-50%, -50%) rotate(45deg); border-radius: 0; }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
@@ -71,48 +46,70 @@ body.hovering .cursor-outline { width: 60px; height: 60px; border-color: var(--r
 
 /* ============ NAV ============ */
 header {
-  position: fixed; top: 0; left: 0; right: 0;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 20px 5vw; background: rgba(5, 5, 5, 0.4);
-  border-bottom: 1px solid transparent;
-  z-index: 1000; transition: all 0.4s ease;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5vw;
+  background: rgba(5, 5, 5, 0.7);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 1000;
+  transition: all 0.3s ease;
 }
-header.scrolled {
-  background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-  border-bottom: 1px solid var(--border-color); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-  padding: 15px 5vw;
+.logo {
+  font-family: var(--display);
+  font-size: 2rem;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(255,255,255,0.1);
 }
-.logo { font-family: var(--display); font-size: 2rem; color: var(--white); text-transform: uppercase; letter-spacing: 2px; z-index: 1001; position: relative; }
 .logo span { color: var(--red); text-shadow: 0 0 15px var(--red-glow); }
-.status-indicator {
-  font-size: 0.6rem; font-family: var(--body); font-weight: 700; letter-spacing: 2px;
-  color: #00FF41; border: 1px solid #00FF41; padding: 3px 8px; border-radius: 20px;
-  margin-left: 15px; vertical-align: middle; box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
-  animation: pulse 2s infinite;
-}
-
 .nav-links { display: flex; gap: 40px; }
 .nav-links a {
-  color: var(--off-white); text-decoration: none; font-weight: 600; font-size: 0.85rem;
-  text-transform: uppercase; letter-spacing: 2px; position: relative; transition: color 0.3s;
+  color: var(--off-white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  transition: color 0.3s;
 }
 .nav-links a::after {
-  content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px;
-  background: var(--red); transition: width 0.3s ease; box-shadow: 0 0 10px var(--red);
+  content: '';
+  position: absolute;
+  bottom: -6px; left: 0; width: 0%; height: 2px;
+  background: var(--red);
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px var(--red);
 }
 .nav-links a:hover { color: var(--white); }
 .nav-links a:hover::after { width: 100%; }
-.mobile-menu { display: none; color: var(--white); font-size: 1.8rem; cursor: none; background: none; border: none; transition: 0.3s; z-index: 1001; position: relative; }
+.mobile-menu { display: none; color: var(--white); font-size: 1.8rem; cursor: pointer; background: none; border: none; transition: 0.3s; }
 .mobile-menu:hover { color: var(--red); }
 
 /* ============ BUTTONS ============ */
 .btn {
-  display: inline-block; background: var(--red); color: var(--white); font-family: var(--body);
-  font-weight: 700; text-transform: uppercase; letter-spacing: 3px; padding: 18px 45px;
-  border: none; text-decoration: none;
+  display: inline-block;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--body);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 18px 45px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
   clip-path: polygon(15px 0, 100% 0, calc(100% - 15px) 100%, 0 100%);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  box-shadow: 0 0 20px var(--red-glow); position: relative; overflow: hidden; cursor: none;
+  box-shadow: 0 0 20px var(--red-glow);
+  position: relative;
+  overflow: hidden;
 }
 .btn::before {
   content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
@@ -120,166 +117,351 @@ header.scrolled {
   transition: all 0.5s ease;
 }
 .btn:hover::before { left: 100%; }
-.btn:hover { background: var(--white); color: var(--black); transform: translateY(-3px) scale(1.02); box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3); }
+.btn:hover {
+  background: var(--white);
+  color: var(--black);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+}
 
 /* ============ HERO SECTION ============ */
 .hero {
-  position: relative; min-height: 100vh; display: flex; flex-direction: column;
-  justify-content: center; align-items: center; text-align: center; padding: 160px 5vw 100px;
-  background: radial-gradient(circle at center, rgba(255, 42, 64, 0.15) 0%, transparent 50%);
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 160px 5vw 100px;
+  background: 
+    radial-gradient(circle at center, rgba(255, 42, 64, 0.15) 0%, transparent 50%),
+    linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 50px 50px, 50px 50px;
 }
-.hero-badge, .hero-title, .hero-sub, .hero-statement, .hero .btn { opacity: 0; animation: fadeInUp 1s ease forwards; }
-.hero-badge { animation-delay: 0.2s; background: rgba(255, 42, 64, 0.05); color: var(--red); padding: 8px 20px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px; border: 1px solid var(--red); border-radius: 50px; margin-bottom: 40px; box-shadow: 0 0 15px var(--red-glow); backdrop-filter: blur(5px); }
-.hero-title { animation-delay: 0.4s; font-family: var(--display); font-size: clamp(4.5rem, 12vw, 11rem); line-height: 0.9; color: var(--white); text-transform: uppercase; margin-bottom: 25px; text-shadow: 0 10px 40px rgba(0,0,0,0.8); }
-.hero-title .outline { -webkit-text-stroke: 2px rgba(255,255,255,0.8); color: transparent; display: block; }
-.hero-title:hover { animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite; }
-.hero-sub { animation-delay: 0.6s; font-size: clamp(1rem, 2vw, 1.2rem); color: #a0a0a0; max-width: 650px; margin: 0 auto 50px; font-weight: 500; }
-.hero-statement { animation-delay: 0.8s; font-family: var(--display); font-size: clamp(2.5rem, 6vw, 5rem); text-transform: uppercase; line-height: 1.1; margin-bottom: 60px; letter-spacing: 2px; background: linear-gradient(180deg, #FFFFFF 0%, #71717A 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.hero-statement span { background: linear-gradient(180deg, #FF2A40 0%, #8A0010 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; }
-.hero .btn { animation-delay: 1s; }
+.hero-badge {
+  background: rgba(255, 42, 64, 0.05);
+  color: var(--red);
+  padding: 8px 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border: 1px solid var(--red);
+  border-radius: 50px;
+  margin-bottom: 40px;
+  animation: fade-in-up 1s ease;
+  box-shadow: 0 0 15px var(--red-glow);
+}
+.hero-title {
+  font-family: var(--display);
+  font-size: clamp(4.5rem, 12vw, 11rem);
+  line-height: 0.9;
+  color: var(--white);
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  animation: fade-in-up 1.2s ease;
+  text-shadow: 0 10px 40px rgba(0,0,0,0.8);
+}
+.hero-title .outline {
+  -webkit-text-stroke: 2px rgba(255,255,255,0.8);
+  color: transparent;
+  display: block;
+}
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #a0a0a0;
+  max-width: 650px;
+  margin: 0 auto 50px;
+  animation: fade-in-up 1.4s ease;
+  font-weight: 500;
+}
+.hero-statement {
+  font-family: var(--display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin-bottom: 60px;
+  letter-spacing: 2px;
+  animation: fade-in-up 1.6s ease;
+  /* Cinematic text gradient */
+  background: linear-gradient(180deg, #FFFFFF 0%, #71717A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-statement span {
+  background: linear-gradient(180deg, #FF2A40 0%, #8A0010 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+}
 
-/* ============ SCROLL REVEAL UTILITY ============ */
-.reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
-.reveal.active { opacity: 1; transform: translateY(0); }
+/* ============ MARQUEE (TICKER) ============ */
+.marquee-wrapper {
+  background: var(--red);
+  padding: 18px 0;
+  transform: skewY(-1.5deg);
+  margin-top: -40px;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 0 30px var(--red-glow);
+}
+.marquee {
+  white-space: nowrap;
+  overflow: hidden;
+  display: flex;
+}
+.marquee span {
+  font-family: var(--display);
+  font-size: 2.2rem;
+  color: var(--black);
+  text-transform: uppercase;
+  padding-right: 50px;
+  animation: scroll 20s linear infinite;
+  letter-spacing: 2px;
+}
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
 
 /* ============ ABOUT SECTION ============ */
-.about { padding: 150px 5vw; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1400px; margin: 0 auto; }
-.section-title { font-family: var(--display); font-size: clamp(3.5rem, 6vw, 5.5rem); color: var(--white); line-height: 0.95; margin-bottom: 30px; text-transform: uppercase; }
+.about {
+  padding: 150px 5vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.section-title {
+  font-family: var(--display);
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
+  color: var(--white);
+  line-height: 0.95;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
 .section-title span { color: var(--red); }
-.about-text p { font-size: 1.15rem; margin-bottom: 25px; color: #a0a0a0; }
+.about-text p {
+  font-size: 1.15rem;
+  margin-bottom: 25px;
+  color: #a0a0a0;
+}
 .about-text p strong { color: var(--white); font-weight: 700; }
-.about-visual { background: var(--dark-grey); height: 450px; position: relative; display: flex; justify-content: center; align-items: center; border: 1px solid var(--border-color); overflow: hidden; }
-.about-visual::after { content: 'DCSMAT'; font-family: var(--display); font-size: 9rem; color: rgba(255,255,255,0.03); position: absolute; transform: rotate(-90deg); left: -100px; pointer-events: none; }
-.about-visual .img-wrapper { width: 100%; height: 100%; position: relative; transition: transform 0.5s ease; }
-.about-visual:hover .img-wrapper { transform: scale(1.05); }
-.about-visual .img-wrapper::before { content: ''; position: absolute; inset: 0; background: var(--red); mix-blend-mode: overlay; opacity: 0.2; z-index: 2; transition: opacity 0.5s; }
-.about-visual:hover .img-wrapper::before { opacity: 0; }
-.about-visual img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%) contrast(1.2); transition: filter 0.5s; }
-.about-visual:hover img { filter: grayscale(0%) contrast(1.1); }
-.crosshair { width: 50px; height: 50px; border: 2px solid var(--red); position: absolute; z-index: 3; box-shadow: 0 0 10px var(--red-glow); }
+.about-visual {
+  background: var(--dark-grey);
+  height: 450px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--border-color);
+}
+.about-visual::after {
+  content: 'DCSMAT';
+  font-family: var(--display);
+  font-size: 9rem;
+  color: rgba(255,255,255,0.03);
+  position: absolute;
+  transform: rotate(-90deg);
+  left: -100px;
+  pointer-events: none;
+}
+/* Cyberpunk Image Overlay */
+.about-visual .img-wrapper {
+  width: 100%; height: 100%;
+  position: relative;
+}
+.about-visual .img-wrapper::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--red);
+  mix-blend-mode: overlay;
+  opacity: 0.2;
+  z-index: 2;
+}
+.about-visual img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(100%) contrast(1.2);
+}
+.crosshair {
+  width: 50px; height: 50px;
+  border: 2px solid var(--red);
+  position: absolute;
+  z-index: 3;
+  box-shadow: 0 0 10px var(--red-glow);
+}
 .c-top-left { top: -10px; left: -10px; border-right: none; border-bottom: none; }
 .c-bottom-right { bottom: -10px; right: -10px; border-left: none; border-top: none; }
 
-/* ============ TACTICAL ALERT BANNER ============ */
-.alert-banner {
-  max-width: 1400px; margin: 0 auto 50px; padding: 25px 40px;
-  background: rgba(255, 184, 0, 0.1); border-left: 5px solid var(--alert-yellow);
-  display: flex; align-items: center; gap: 20px;
-  box-shadow: 0 0 20px rgba(255, 184, 0, 0.15);
-  position: relative; overflow: hidden;
-}
-.alert-banner::before {
-  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 184, 0, 0.05) 10px, rgba(255, 184, 0, 0.05) 20px);
-  pointer-events: none;
-}
-.alert-icon { font-size: 2.5rem; animation: pulse-alert 2s infinite; }
-.alert-text h4 { color: var(--alert-yellow); font-family: var(--display); font-size: 1.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; line-height: 1; }
-.alert-text p { color: var(--white); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.5px; }
-
 /* ============ TOURNAMENTS SECTION ============ */
-.tournaments { background: var(--dark-grey); padding: 100px 5vw 150px; position: relative; border-top: 1px solid var(--border-color); }
+.tournaments {
+  background: var(--dark-grey);
+  padding: 150px 5vw;
+  position: relative;
+}
 .tournaments-container { max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
-
-/* Cards as Links */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-top: 60px;
+}
 .card {
-  display: block; text-decoration: none;
-  background: var(--card-bg); border: 1px solid var(--border-color); padding: 50px 40px; 
-  position: relative; transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.4s; 
-  overflow: hidden; z-index: 1; cursor: none;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 50px 40px;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
 }
-/* DYNAMIC MOUSE GLOW EFFECT */
+/* Futuristic Card Accents */
 .card::before {
-  content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  background: radial-gradient(600px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), rgba(255, 42, 64, 0.15), transparent 40%);
-  z-index: -1; pointer-events: none; transition: background 0.3s;
+  content: ''; position: absolute; top: 0; left: 0; width: 30px; height: 30px;
+  border-top: 2px solid transparent; border-left: 2px solid transparent;
+  transition: 0.4s;
 }
-.card > * { pointer-events: none; } /* Ensures child elements don't block mouse tracking */
+.card::after {
+  content: ''; position: absolute; bottom: 0; right: 0; width: 30px; height: 30px;
+  border-bottom: 2px solid transparent; border-right: 2px solid transparent;
+  transition: 0.4s;
+}
+.card:hover {
+  transform: translateY(-10px);
+  background: #1a1a1f;
+  border-color: rgba(255, 42, 64, 0.3);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(255, 42, 64, 0.1);
+}
+.card:hover::before { border-color: var(--red); }
+.card:hover::after { border-color: var(--red); }
 
-.card::after { content: ''; position: absolute; bottom: 0; right: 0; width: 30px; height: 30px; border-bottom: 2px solid transparent; border-right: 2px solid transparent; transition: 0.4s; z-index: 2;}
-.card-corner { content: ''; position: absolute; top: 0; left: 0; width: 30px; height: 30px; border-top: 2px solid transparent; border-left: 2px solid transparent; transition: 0.4s; z-index: 2;}
-
-.card:hover { transform: translateY(-10px); border-color: rgba(255, 42, 64, 0.5); box-shadow: 0 20px 40px rgba(0,0,0,0.7), 0 0 20px rgba(255, 42, 64, 0.2); }
-.card:hover .card-corner, .card:hover::after { border-color: var(--red); }
-
-.card-tag { position: absolute; top: 0; right: 20px; background: var(--red); color: var(--white); font-size: 0.75rem; font-weight: 700; padding: 8px 15px; text-transform: uppercase; letter-spacing: 1px; clip-path: polygon(0 0, 100% 0, 100% 100%, 10px 100%); z-index: 2; }
-.card h3 { font-family: var(--display); font-size: 3.5rem; color: var(--white); margin-bottom: 15px; line-height: 1; text-shadow: 2px 2px 0px rgba(0,0,0,1); transition: color 0.3s; }
-.card:hover h3 { color: var(--red); }
+.card-tag {
+  position: absolute;
+  top: 0; right: 20px;
+  background: var(--red);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 8px 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 10px 100%);
+}
+.card h3 {
+  font-family: var(--display);
+  font-size: 3.5rem;
+  color: var(--white);
+  margin-bottom: 15px;
+  line-height: 1;
+  text-shadow: 2px 2px 0px rgba(0,0,0,1);
+}
 .card p { color: #888; font-size: 0.95rem; margin-bottom: 30px; line-height: 1.5; }
-.card-details { display: flex; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 20px; font-family: var(--display); font-size: 1.3rem; letter-spacing: 1px; }
+.card-details {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
+  font-family: var(--display);
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+}
 .card-details span { color: var(--red); }
-.view-intel { margin-top: 25px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--white); letter-spacing: 2px; display: flex; align-items: center; gap: 10px; opacity: 0.5; transition: 0.3s; }
-.card:hover .view-intel { opacity: 1; color: var(--red); gap: 15px; }
-.view-intel::after { content: '→'; font-size: 1.2rem; }
 
 /* ============ REGISTRATION FORM ============ */
-.register { padding: 150px 5vw; max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; }
+.register {
+  padding: 150px 5vw;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+}
 .reg-info ul { list-style: none; color: var(--white); margin-bottom: 40px; }
-.reg-info li { margin-bottom: 20px; font-size: 1.1rem; display: flex; align-items: center; gap: 15px; transform: translateX(-20px); opacity: 0; transition: all 0.5s ease; }
-.reg-info.active li { transform: translateX(0); opacity: 1; }
-.reg-info.active li:nth-child(1) { transition-delay: 0.2s; }
-.reg-info.active li:nth-child(2) { transition-delay: 0.3s; }
-.reg-info.active li:nth-child(3) { transition-delay: 0.4s; }
-.reg-info.active li:nth-child(4) { transition-delay: 0.5s; }
-.reg-info li::before { content: '■'; color: var(--red); font-size: 1.2rem; }
+.reg-info li {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.reg-info li::before {
+  content: '■'; color: var(--red); font-size: 1.2rem;
+}
 
-.reg-form { background: var(--card-bg); padding: 60px 50px; border: 1px solid var(--border-color); position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-.reg-form::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--red), transparent); }
+.reg-form {
+  background: var(--card-bg);
+  padding: 60px 50px;
+  border: 1px solid var(--border-color);
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+/* Top glowing line for form */
+.reg-form::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--red), transparent);
+}
 .input-group { margin-bottom: 30px; position: relative; }
-.input-group label { display: block; margin-bottom: 10px; color: #a0a0a0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; transition: 0.3s; }
-.input-group input, .input-group select { width: 100%; background: rgba(255,255,255,0.02); border: none; border-bottom: 2px solid var(--border-color); color: var(--white); padding: 15px 20px; font-family: var(--body); font-size: 1.1rem; outline: none; transition: all 0.3s ease; cursor: none; }
-.input-group input:focus, .input-group select:focus { background: rgba(255, 42, 64, 0.05); border-bottom-color: var(--red); padding-left: 25px; }
-.input-group input:focus + label, .input-group input:not(:placeholder-shown) + label { color: var(--red); }
+.input-group label {
+  display: block; margin-bottom: 10px; color: #a0a0a0; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem;
+  transition: 0.3s;
+}
+.input-group input, .input-group select {
+  width: 100%;
+  background: rgba(255,255,255,0.02);
+  border: none;
+  border-bottom: 2px solid var(--border-color);
+  color: var(--white);
+  padding: 15px 20px;
+  font-family: var(--body);
+  font-size: 1.1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+.input-group input:focus, .input-group select:focus {
+  background: rgba(255, 42, 64, 0.05);
+  border-bottom-color: var(--red);
+}
+.input-group input:focus + label, .input-group input:not(:placeholder-shown) + label {
+  color: var(--red);
+}
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
 select option { background: var(--black); color: var(--white); }
 
 /* ============ FOOTER ============ */
-footer { background: var(--black); border-top: 1px solid var(--border-color); padding: 80px 5vw 40px; text-align: center; position: relative; overflow: hidden; }
-footer h2 { font-family: var(--display); font-size: 3rem; color: var(--white); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
+footer {
+  background: var(--black);
+  border-top: 1px solid var(--border-color);
+  padding: 80px 5vw 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+footer h2 {
+  font-family: var(--display); font-size: 3rem; color: var(--white); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px;
+}
 footer h2 span { color: var(--red); }
 footer p { color: #666; font-size: 0.95rem; }
 .footer-links { margin: 40px 0; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-.footer-links a { color: var(--off-white); text-transform: uppercase; font-weight: 700; text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: 0.3s; cursor: none; }
-.footer-links a:hover { color: var(--red); text-shadow: 0 0 10px var(--red-glow); transform: translateY(-2px); }
+.footer-links a {
+  color: var(--off-white); text-transform: uppercase; font-weight: 700; text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: 0.3s;
+}
+.footer-links a:hover { color: var(--red); text-shadow: 0 0 10px var(--red-glow); }
 .copyright { opacity: 0.4; font-size: 0.8rem !important; margin-top: 40px; }
 
 /* ============ ANIMATIONS ============ */
-@keyframes fadeInUp {
+@keyframes fade-in-up {
   0% { opacity: 0; transform: translateY(40px); }
   100% { opacity: 1; transform: translateY(0); }
 }
-@keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
-}
-@keyframes pulse-alert {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.8; }
-  100% { transform: scale(1); opacity: 1; }
-}
-@keyframes glitch {
-  0% { transform: translate(0) }
-  20% { transform: translate(-2px, 2px) }
-  40% { transform: translate(-2px, -2px) }
-  60% { transform: translate(2px, 2px) }
-  80% { transform: translate(2px, -2px) }
-  100% { transform: translate(0) }
-}
 
-/* ============ RESPONSIVE & MENU ACTIVE ============ */
-.nav-links.nav-active {
-  display: flex !important; flex-direction: column; position: absolute; top: 100%; left: 0;
-  width: 100%; background: rgba(5, 5, 5, 0.98); border-bottom: 1px solid var(--border-color);
-  padding: 30px 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-}
+/* ============ RESPONSIVE ============ */
 @media (max-width: 1024px) {
   .about, .register { grid-template-columns: 1fr; gap: 60px; }
   .about-visual { height: 400px; }
   .reg-form { padding: 40px 30px; }
-  .cursor-dot, .cursor-outline { display: none; }
-  * { cursor: auto; }
 }
 @media (max-width: 768px) {
   .nav-links { display: none; }
@@ -288,55 +470,62 @@ footer p { color: #666; font-size: 0.95rem; }
   .form-row { grid-template-columns: 1fr; gap: 0; }
   .card h3 { font-size: 2.8rem; }
   .section-title { font-size: 2.8rem; }
-  .alert-banner { flex-direction: column; text-align: center; padding: 25px 20px; }
 }
 </style>
 </head>
 <body>
 
-<!-- Custom Cursor -->
-<div class="cursor-dot"></div>
-<div class="cursor-outline"></div>
-
 <!-- HEADER -->
-<header id="main-header">
-  <div class="logo">Luminance<span>Fest</span><span class="status-indicator">● ONLINE</span></div>
-  <nav class="nav-links" id="nav-links">
-    <a href="#about" class="hover-target">The Arena</a>
-    <a href="#tournaments" class="hover-target">Battlegrounds</a>
-    <a href="#register" class="hover-target">Register</a>
+<header>
+  <div class="logo">Luminance<span>Fest</span></div>
+  <nav class="nav-links">
+    <a href="#about">The Arena</a>
+    <a href="#tournaments">Battlegrounds</a>
+    <a href="#register">Register</a>
   </nav>
-  <button class="mobile-menu hover-target" id="mobile-toggle">☰</button>
+  <button class="mobile-menu">☰</button>
 </header>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-badge">Organized by UG Students</div>
+  
   <h1 class="hero-title">
     Kerala's Biggest<br>
     <span class="outline">E-Sports Fest</span>
   </h1>
+  
   <p class="hero-sub">Welcome to the apex of South Indian competitive gaming. Held at the high-altitude arena of DCSMAT Vagamon. No lag. No excuses. Pure glory.</p>
+  
   <h2 class="hero-statement">
     Survive The Drop.<br>
     <span>Dominate The Lobby.</span>
   </h2>
-  <a href="#register" class="btn hover-target">Enter The Arena</a>
+
+  <a href="#register" class="btn">Enter The Arena</a>
 </section>
+
+<!-- MARQUEE TICKER -->
+<div class="marquee-wrapper">
+  <div class="marquee">
+    <span>BGMI // VALORANT // CS2 // E-FOOTBALL // FREE FIRE // FIFA 26 // BGMI // VALORANT // CS2 // E-FOOTBALL // FREE FIRE // FIFA 26 //</span>
+    <span>BGMI // VALORANT // CS2 // E-FOOTBALL // FREE FIRE // FIFA 26 // BGMI // VALORANT // CS2 // E-FOOTBALL // FREE FIRE // FIFA 26 //</span>
+  </div>
+</div>
 
 <!-- ABOUT SECTION -->
 <section class="about" id="about">
-  <div class="about-text reveal">
+  <div class="about-text">
     <h2 class="section-title">Built By Players.<br><span>For Players.</span></h2>
     <p>Driven entirely by the <strong>UG Students of DCSMAT Vagamon</strong>, Luminance Fest has leveled up from a standard college gathering into Kerala’s most aggressive, high-stakes e-sports tournament.</p>
     <p>We’ve transformed our mountain campus into a massive LAN battleground. Whether you are a tactical shooter mastermind, a mobile battle royale survivor, or a console god, this is where South India's legends are crowned.</p>
-    <a href="#tournaments" class="btn hover-target" style="margin-top: 25px;">View Brackets</a>
+    <a href="#tournaments" class="btn" style="margin-top: 25px;">View Brackets</a>
   </div>
-  <div class="about-visual reveal">
+  <div class="about-visual">
     <div class="crosshair c-top-left"></div>
     <div class="crosshair c-bottom-right"></div>
     <div class="img-wrapper">
-      <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Gaming Setup" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Gaming Setup">
     </div>
   </div>
 </section>
@@ -344,22 +533,11 @@ footer p { color: #666; font-size: 0.95rem; }
 <!-- TOURNAMENTS SECTION -->
 <section class="tournaments" id="tournaments">
   <div class="tournaments-container">
-    
-    <!-- TACTICAL ALERT BANNER (DISCLAIMER) -->
-    <div class="alert-banner reveal">
-      <div class="alert-icon">⚠️</div>
-      <div class="alert-text">
-        <h4>Priority Directive</h4>
-        <p>ALL PLAYERS MUST BRING THEIR OWN GAMING LAPTOPS AND PERIPHERALS FOR LAN TOURNAMENTS.</p>
-      </div>
-    </div>
-
-    <h2 class="section-title reveal">The <span>Battlegrounds</span></h2>
+    <h2 class="section-title">The <span>Battlegrounds</span></h2>
     <div class="grid">
       
-      <!-- Card 1 (Clickable Link to valorant.html) -->
-      <a href="valorant.html" class="card reveal hover-target">
-        <div class="card-corner"></div>
+      <!-- Card 1 -->
+      <div class="card">
         <div class="card-tag">PC LAN</div>
         <h3>Valorant</h3>
         <p>5v5 Tactical Shooter. Bring your squad to the main stage and secure the spike under the stadium lights.</p>
@@ -367,12 +545,10 @@ footer p { color: #666; font-size: 0.95rem; }
           <div>Format: <span>Single Elim</span></div>
           <div>Prize: <span>₹1,00,000</span></div>
         </div>
-        <div class="view-intel">Access Terminal Intel</div>
-      </a>
+      </div>
 
-      <!-- Card 2 (Clickable Link to bgmi.html) -->
-      <a href="bgmi.html" class="card reveal hover-target" style="transition-delay: 0.1s;">
-        <div class="card-corner"></div>
+      <!-- Card 2 -->
+      <div class="card">
         <div class="card-tag">Mobile</div>
         <h3>BGMI</h3>
         <p>Survive the zone. 100 players drop in, but only one squad gets to lift the ultimate trophy.</p>
@@ -380,12 +556,10 @@ footer p { color: #666; font-size: 0.95rem; }
           <div>Format: <span>Squads</span></div>
           <div>Prize: <span>₹1,50,000</span></div>
         </div>
-        <div class="view-intel">Access Terminal Intel</div>
-      </a>
+      </div>
 
-      <!-- Card 3 (Clickable Link to cs2.html) -->
-      <a href="cs2.html" class="card reveal hover-target" style="transition-delay: 0.2s;">
-        <div class="card-corner"></div>
+      <!-- Card 3 -->
+      <div class="card">
         <div class="card-tag">PC LAN</div>
         <h3>CS 2</h3>
         <p>The classic returns. Flashbangs, smokes, and pure unadulterated mechanical aim required.</p>
@@ -393,12 +567,10 @@ footer p { color: #666; font-size: 0.95rem; }
           <div>Format: <span>5v5</span></div>
           <div>Prize: <span>₹75,000</span></div>
         </div>
-        <div class="view-intel">Access Terminal Intel</div>
-      </a>
+      </div>
 
-      <!-- Card 4 (Clickable Link to efootball.html) -->
-      <a href="efootball.html" class="card reveal hover-target" style="transition-delay: 0.3s;">
-        <div class="card-corner"></div>
+      <!-- Card 4 -->
+      <div class="card">
         <div class="card-tag">Console</div>
         <h3>E-Football</h3>
         <p>1v1 virtual pitch action. No excuses, just pure stick skills on the massive main stage screen.</p>
@@ -406,8 +578,7 @@ footer p { color: #666; font-size: 0.95rem; }
           <div>Format: <span>1v1</span></div>
           <div>Prize: <span>₹40,000</span></div>
         </div>
-        <div class="view-intel">Access Terminal Intel</div>
-      </a>
+      </div>
 
     </div>
   </div>
@@ -415,7 +586,7 @@ footer p { color: #666; font-size: 0.95rem; }
 
 <!-- REGISTRATION SECTION -->
 <section class="register" id="register">
-  <div class="reg-info reveal">
+  <div class="reg-info">
     <h2 class="section-title">Secure Your<br><span>Drop Location</span></h2>
     <p style="color: #888; font-size: 1.15rem; margin-bottom: 40px; max-width: 90%;">
       Slots are heavily limited. Register your squad now to lock in your position for the qualifiers. Registration includes dorm access, meals, and entry to the after-party DJ night.
@@ -428,32 +599,32 @@ footer p { color: #666; font-size: 0.95rem; }
     </ul>
   </div>
 
-  <form class="reg-form reveal hover-target" action="https://formspree.io/f/mbdnaekw" method="POST">
+  <form class="reg-form" action="https://formspree.io/f/mbdnaekw" method="POST">
     <div class="form-row">
       <div class="input-group">
         <label>In-Game Name (IGN)</label>
-        <input type="text" name="ign" placeholder="e.g. TenZ" required class="hover-target">
+        <input type="text" name="ign" placeholder="e.g. TenZ" required>
       </div>
       <div class="input-group">
         <label>Real Name</label>
-        <input type="text" name="real_name" placeholder="John Doe" required class="hover-target">
+        <input type="text" name="real_name" placeholder="John Doe" required>
       </div>
     </div>
     
     <div class="form-row">
       <div class="input-group">
         <label>College / Institution</label>
-        <input type="text" name="college" placeholder="Enter College Name" required class="hover-target">
+        <input type="text" name="college" placeholder="Enter College Name" required>
       </div>
       <div class="input-group">
         <label>Contact Number</label>
-        <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required class="hover-target">
+        <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required>
       </div>
     </div>
 
     <div class="input-group">
       <label>Select Tournament</label>
-      <select name="tournament" required class="hover-target">
+      <select name="tournament" required>
         <option value="" disabled selected>CHOOSE YOUR GAME</option>
         <option value="Valorant">VALORANT (Squad)</option>
         <option value="BGMI">BGMI (Squad)</option>
@@ -463,7 +634,7 @@ footer p { color: #666; font-size: 0.95rem; }
       </select>
     </div>
 
-    <button type="submit" class="btn hover-target" style="width: 100%; text-align: center; margin-top: 15px; font-size: 1.1rem;">Lock In Registration</button>
+    <button type="submit" class="btn" style="width: 100%; text-align: center; margin-top: 15px; font-size: 1.1rem;">Lock In Registration</button>
   </form>
 </section>
 
@@ -472,101 +643,43 @@ footer p { color: #666; font-size: 0.95rem; }
   <h2>Luminance <span>Fest 2026</span></h2>
   <p>Forged by the UG Students of DCSMAT Vagamon, Kerala.</p>
   <div class="footer-links">
-    <a href="#" class="hover-target">Rules & Discord</a>
-    <a href="#" class="hover-target">Campus Map</a>
-    <a href="#" class="hover-target">Tournament Brackets</a>
-    <a href="#" class="hover-target">Contact Admins</a>
+    <a href="#">Rules & Discord</a>
+    <a href="#">Campus Map</a>
+    <a href="#">Tournament Brackets</a>
+    <a href="#">Contact Admins</a>
   </div>
   <p class="copyright">© 2026 Luminance Fest E-Sports. All rights reserved.</p>
 </footer>
 
 <script>
-  /* =======================================
-     1. CUSTOM GAMING CURSOR LOGIC
-  ======================================= */
-  const cursorDot = document.querySelector('.cursor-dot');
-  const cursorOutline = document.querySelector('.cursor-outline');
-  const hoverTargets = document.querySelectorAll('.hover-target, a, input, select, button');
-
-  window.addEventListener('mousemove', (e) => {
-    const posX = e.clientX;
-    const posY = e.clientY;
-    
-    cursorDot.style.left = `${posX}px`;
-    cursorDot.style.top = `${posY}px`;
-    
-    cursorOutline.animate({
-      left: `${posX}px`,
-      top: `${posY}px`
-    }, { duration: 200, fill: "forwards" });
+  // Mobile menu logic with sleek dark overlay
+  document.querySelector('.mobile-menu').addEventListener('click', function() {
+    const nav = document.querySelector('.nav-links');
+    if (nav.style.display === 'flex') {
+      nav.style.display = 'none';
+    } else {
+      nav.style.display = 'flex';
+      nav.style.flexDirection = 'column';
+      nav.style.position = 'absolute';
+      nav.style.top = '100%';
+      nav.style.left = '0';
+      nav.style.width = '100%';
+      nav.style.background = 'rgba(5, 5, 5, 0.98)';
+      nav.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+      nav.style.padding = '30px 20px';
+      nav.style.boxShadow = '0 20px 40px rgba(0,0,0,0.8)';
+    }
   });
 
-  hoverTargets.forEach(target => {
-    target.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-    target.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-  });
-
-  /* =======================================
-     2. DYNAMIC CARD MOUSE GLOW
-  ======================================= */
-  document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      card.style.setProperty('--mouse-x', `${x}px`);
-      card.style.setProperty('--mouse-y', `${y}px`);
-    });
-  });
-
-  /* =======================================
-     3. INTERSECTION OBSERVER (Scroll Reveals)
-  ======================================= */
-  const revealElements = document.querySelectorAll('.reveal');
-  const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
-
-  const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('active');
-      observer.unobserve(entry.target);
-    });
-  }, revealOptions);
-
-  revealElements.forEach(el => revealOnScroll.observe(el));
-
-  /* =======================================
-     4. EFFICIENT NAV LOGIC
-  ======================================= */
-  const mobileToggle = document.getElementById('mobile-toggle');
-  const navLinks = document.getElementById('nav-links');
-
-  mobileToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('nav-active');
-  });
-
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      if(window.innerWidth <= 768) {
-        navLinks.classList.remove('nav-active');
-      }
-    });
-  });
-
-  const header = document.getElementById('main-header');
-  let isScrolling = false;
-
+  // Smooth blur navbar on scroll
   window.addEventListener('scroll', () => {
-    if (!isScrolling) {
-      window.requestAnimationFrame(() => {
-        if (window.scrollY > 50) {
-          header.classList.add('scrolled');
-        } else {
-          header.classList.remove('scrolled');
-        }
-        isScrolling = false;
-      });
-      isScrolling = true;
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+      header.style.background = 'rgba(5, 5, 5, 0.85)';
+      header.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.5)';
+    } else {
+      header.style.background = 'rgba(5, 5, 5, 0.7)';
+      header.style.boxShadow = 'none';
     }
   });
 </script>
